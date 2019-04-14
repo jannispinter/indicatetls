@@ -1,0 +1,6 @@
+{
+  "extensionDescription": {
+    "message": "Displays negotiated TLS protocol version in the adress bar.",
+    "description": "Description of the extension."
+  }
+}

@@ -1,0 +1,43 @@
+{
+    "manifest_version": 2,
+    "name": "IndicateTLS",
+    "short_name": "IndicateTLS",
+    "version": "0.0.2",
+    "default_locale": "en",
+    "description": "__MSG_extensionDescription__",
+    "homepage_url": "https://github.com/jannispinter/indicatetls",
+    "developer": {
+        "name": "Jannis Pinter",
+        "url": "https://github.com/jannispinter/indicatetls"
+    },
+    "icons": {
+        "48": "icons/icon_48.png",
+        "96": "icons/icon_96.png"
+    },
+    "applications": {
+        "gecko": {
+            "strict_min_version": "62.0"
+        }
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "page_action": {
+        "browser_style": true,
+        "default_icon": "icons/tlsunknown.png",
+        "default_title": "IndicateTLS",
+        "show_matches": [
+            "https://*/*"
+        ]
+    },
+    "permissions": [
+        "tabs",
+        "webNavigation",
+        "webRequest",
+        "webRequestBlocking",
+        "http://*/*",
+        "https://*/*"
+    ]
+}

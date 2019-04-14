@@ -1,0 +1,6 @@
+{
+  "extensionDescription": {
+    "message": "Zeigt die ausgehandelte TLS Protokollversion in der Adressleiste an.",
+    "description": "Description of the extension."
+  }
+}
