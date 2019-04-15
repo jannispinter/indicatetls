@@ -7,4 +7,4 @@ You can download the extension from Mozilla's Add-on website [here](https://addo
 **Note:** This extension requires Mozilla Firefox 62 or newer
 
 # Screenshots
-![screenshot](https://addons.cdn.mozilla.net/user-media/previews/thumbs/217/217983.png?modified=1555271060)
+![screenshot](https://addons.cdn.mozilla.net/user-media/previews/full/218/218000.png?modified=1555307259)
