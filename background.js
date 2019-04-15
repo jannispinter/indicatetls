@@ -10,7 +10,7 @@ versionIconMap.set('unknown', 'icons/tlsunknown.png');
 var tabMainProtocolMap = new Map();
 var tabSubresourceProtocolMap = new Map();
 
-function updateIcon(tabId, protocolVersion) {
+async function updateIcon(tabId, protocolVersion) {
     browser.pageAction.setIcon({
         tabId: tabId, path: versionIconMap.get(protocolVersion)
     });
@@ -42,26 +42,28 @@ function getSubresourceMap(tabId) {
 async function processSecurityInfo(details) {
 
     try {
-	var host = getDomain(details.url);
-        var subresourceMap = getSubresourceMap(details.tabId);
-        if (subresourceMap.has(host)) {
-            // We already processed information for this host, exit early
-            return;
-        }
+	    var host = getDomain(details.url);
+
 
         let securityInfo = await browser.webRequest.getSecurityInfo(details.requestId,{});
+        if (typeof securityInfo === "undefined") {
+            return;
+        }
 
         /* set the icon correctly */
         if (details.type === 'main_frame') {
             tabMainProtocolMap.set(details.tabId, securityInfo.protocolVersion);
-            updateIcon(details.tabId, securityInfo.protocolVersion);
+            await updateIcon(details.tabId, securityInfo.protocolVersion);
         } else {
             cached_version = tabMainProtocolMap.get(details.tabId);
-            updateIcon(details.tabId, cached_version);
+			if (typeof cached_version !== "undefined") {
+              await updateIcon(details.tabId, cached_version);
+			}
         }
 
+        var subresourceMap = getSubresourceMap(details.tabId);
         subresourceMap.set(host, securityInfo);
-        //tabSubresourceProtocolMap.set(details.tabId, subresourceMap);
+        tabSubresourceProtocolMap.set(details.tabId, subresourceMap);
 
     } catch(error) {
         console.error(error);
