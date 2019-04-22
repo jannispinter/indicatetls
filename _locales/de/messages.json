@@ -2,5 +2,42 @@
   "extensionDescription": {
     "message": "Zeigt die ausgehandelte TLS Protokollversion in der Adressleiste an.",
     "description": "Description of the extension."
+  },
+
+  "popupTitleHost": {
+    "message": "Host",
+    "description": ""
+  },
+
+  "popupTitleProtocol": {
+    "message": "Protokoll",
+    "description": ""
+  },
+
+  "popupTitleKeyExchange": {
+    "message": "Key Exchange",
+    "description": ""
+  },
+
+  "popupTitleSignature": {
+    "message": "Signatur",
+    "description": ""
+  },
+
+  "popupRunTest": {
+    "message": "Test starten",
+    "description": ""
+  },
+
+  "popupWarningMessage": {
+    "message": "Diese Webseite verwendet $VERSION$, bindet aber Inhalte von Servern mit niedriegerem Sicherheitsniveau ein.",
+    "description": "Tells the user that something is wrong with this website.",
+    "placeholders": {
+      "version" : {
+        "content" : "$1",
+        "example" : "TLSv1.3"
+      }
+    }
   }
+
 }

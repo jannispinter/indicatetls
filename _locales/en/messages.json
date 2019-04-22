@@ -2,5 +2,41 @@
   "extensionDescription": {
     "message": "Displays negotiated TLS protocol version in the adress bar.",
     "description": "Description of the extension."
+  },
+
+  "popupTitleHost": {
+    "message": "Host",
+    "description": ""
+  },
+
+  "popupTitleProtocol": {
+    "message": "Protocol",
+    "description": ""
+  },
+
+  "popupTitleKeyExchange": {
+    "message": "Key Exchange",
+    "description": ""
+  },
+
+  "popupTitleSignature": {
+    "message": "Signature",
+    "description": ""
+  },
+
+  "popupRunTest": {
+    "message": "Run test",
+    "description": ""
+  },
+
+  "popupWarningMessage": {
+    "message": "This website uses $VERSION$ but includes content from servers that only support less secure protocol versions.",
+    "description": "Tells the user that something is wrong with this website.",
+    "placeholders": {
+      "version" : {
+        "content" : "$1",
+        "example" : "TLSv1.3"
+      }
+    }
   }
 }
