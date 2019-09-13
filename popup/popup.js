@@ -1,4 +1,3 @@
-var background = browser.extension.getBackgroundPage();
 var table = document.getElementById('subresource-table');
 
 var protocolColorMap = new Map();
@@ -51,23 +50,40 @@ function clearTable() {
 
 }
 
+function request(resource, key) {
+    const request = browser.runtime.sendMessage({
+        type: 'request',
+        resource: resource,
+        key: key
+    });
+    return request;
+}
+
 function updatePopup(tabInfo) {
     clearTable();
-    var subresourceMap = background.tabSubresourceProtocolMap.get(tabInfo.id);
-    for (const [domain, securityInfo] of subresourceMap.entries()) {
-        insertTableRow(domain, securityInfo);
-    }
-    includesResourcesFromLessSecureHosts(tabInfo, subresourceMap);
+    request('tabSubresourceProtocolMap', tabInfo.id).then((reply) => {
+        var subresourceMap = reply.requested_info;
+        for (const[domain, securityInfo] of subresourceMap.entries()) {
+            insertTableRow(domain, securityInfo);
+        }
+        includesResourcesFromLessSecureHosts(tabInfo, subresourceMap);
+    }).catch(error => console.error(error));
 }
 
 function includesResourcesFromLessSecureHosts(tabInfo, subresourceMap) {
-    var mainProtocolVersion = background.versionComparisonMap.get(background.tabMainProtocolMap.get(tabInfo.id));
-    for (const securityInfo of subresourceMap.values()) {
-        if (background.versionComparisonMap.get(securityInfo.protocolVersion) < mainProtocolVersion) {
-            showWarningMessage(background.tabMainProtocolMap.get(tabInfo.id));
-            break;
-        }
-    }
+    request('tabMainProtocolMap', tabInfo.id).then(reply => {
+        const tabMainProtocolMap = reply.requested_info;
+        request('versionComparisonMap').then((reply) => {
+            const versionComparisonMap = reply.requested_info;
+            const mainProtocolVersion = versionComparisonMap.get(tabMainProtocolMap);
+            for (const securityInfo of subresourceMap.values()) {
+                if (versionComparisonMap.get(securityInfo.protocolVersion) < mainProtocolVersion) {
+                    showWarningMessage(tabMainProtocolMap);
+                    break;
+                }
+            }
+        }).catch(error => console.error(error));
+    }).catch(error => console.error(error));
 }
 
 function showWarningMessage(protocolVersion) {
