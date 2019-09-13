@@ -107,36 +107,33 @@ browser.webNavigation.onBeforeNavigate.addListener(handleNavigation, filter);
 
 /* Event Listener for incoming messages */
 function handleMessage(request, sender, sendResponse) {
+    var response;
     try {
         switch (request.type) {
             case 'request':
+                const is_undefined = typeof request.key === 'undefined';
                 if (request.resource === 'tabSubresourceProtocolMap') {
-                    typeof request.key === 'undefined' ? sendResponse({
-                        requested_info: tabSubresourceProtocolMap
-                    }) : sendResponse({
-                        requested_info: tabSubresourceProtocolMap.get(request.key)
-                    });
+                    response = {
+                        requested_info: is_undefined ? tabSubresourceProtocolMap : tabSubresourceProtocolMap.get(request.key)
+                    };
                 } else if (request.resource === 'tabMainProtocolMap') {
-                    typeof request.key === 'undefined' ? sendResponse({
-                        requested_info: tabMainProtocolMap
-                    }) : sendResponse({
-                        requested_info: tabMainProtocolMap.get(request.key)
-                    });
+                    response = {
+                        requested_info: is_undefined ? tabMainProtocolMap : tabMainProtocolMap.get(request.key)
+                    };
                 } else if (request.resource === 'versionComparisonMap') {
-                    typeof request.key === 'undefined' ? sendResponse({
-                        requested_info: versionComparisonMap
-                    }) : sendResponse({
-                        requested_info: versionComparisonMap.get(request.key)
-                    });
+                    response = {
+                        requested_info: is_undefined ? versionComparisonMap : versionComparisonMap.get(request.key)
+                    };
                 } else {
-                    sendResponse(new Error(browser.i18n.getMessage('invalidResourceRequest')));
+                    response = new Error(browser.i18n.getMessage('invalidResourceRequest'));
                 }
                 break;
             default:
-                sendResponse(new Error(browser.i18n.getMessage('invalidMessageRequest')));
+                response = new Error(browser.i18n.getMessage('invalidMessageRequest'));
         }
     } catch (e) {
-        sendResponse(e);
+        response = e;
     }
+    sendResponse(response);
 }
 browser.runtime.onMessage.addListener(handleMessage);
