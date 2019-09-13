@@ -39,18 +39,6 @@ async function updateIcon(tabId, protocolVersion, warning) {
     browser.pageAction.setPopup({tabId: tabId, popup: "/popup/popup.html"});
 }
 
-
-function getDomain(url) {
-    url = url.replace(/(https?:\/\/)?(www.)?/i, '');
-
-    if (url.indexOf('/') !== -1) {
-        return url.split('/')[0];
-    }
-
-    return url;
-}
-
-
 function getSubresourceMap(tabId) {
     /* fill table for subresources*/	
     if (!tabSubresourceProtocolMap.has(tabId)) {
@@ -63,7 +51,7 @@ function getSubresourceMap(tabId) {
 async function processSecurityInfo(details) {
 
     try {
-        var host = getDomain(details.url);
+        var host = (new URL(details.url)).host;
 
 
         let securityInfo = await browser.webRequest.getSecurityInfo(details.requestId,{});
@@ -116,3 +104,39 @@ browser.pageAction.onClicked.addListener((tab) => {
 
 var filter = {  url: [{schemes: ["https"]} ]};
 browser.webNavigation.onBeforeNavigate.addListener(handleNavigation, filter);
+
+/* Event Listener for incoming messages */
+function handleMessage(request, sender, sendResponse) {
+    try {
+        switch (request.type) {
+            case 'request':
+                if (request.resource === 'tabSubresourceProtocolMap') {
+                    typeof request.key === 'undefined' ? sendResponse({
+                        requested_info: tabSubresourceProtocolMap
+                    }) : sendResponse({
+                        requested_info: tabSubresourceProtocolMap.get(request.key)
+                    });
+                } else if (request.resource === 'tabMainProtocolMap') {
+                    typeof request.key === 'undefined' ? sendResponse({
+                        requested_info: tabMainProtocolMap
+                    }) : sendResponse({
+                        requested_info: tabMainProtocolMap.get(request.key)
+                    });
+                } else if (request.resource === 'versionComparisonMap') {
+                    typeof request.key === 'undefined' ? sendResponse({
+                        requested_info: versionComparisonMap
+                    }) : sendResponse({
+                        requested_info: versionComparisonMap.get(request.key)
+                    });
+                } else {
+                    sendResponse(new Error(browser.i18n.getMessage('invalidResourceRequest')));
+                }
+                break;
+            default:
+                sendResponse(new Error(browser.i18n.getMessage('invalidMessageRequest')));
+        }
+    } catch (e) {
+        sendResponse(e);
+    }
+}
+browser.runtime.onMessage.addListener(handleMessage);
