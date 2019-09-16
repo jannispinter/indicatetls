@@ -39,7 +39,6 @@ async function updateIcon(tabId, protocolVersion, warning) {
     browser.pageAction.setPopup({tabId: tabId, popup: "/popup/popup.html"});
 }
 
-
 function getSubresourceMap(tabId) {
     /* fill table for subresources*/	
     if (!tabSubresourceProtocolMap.has(tabId)) {
@@ -105,3 +104,36 @@ browser.pageAction.onClicked.addListener((tab) => {
 
 var filter = {  url: [{schemes: ["https"]} ]};
 browser.webNavigation.onBeforeNavigate.addListener(handleNavigation, filter);
+
+/* Event Listener for incoming messages */
+function handleMessage(request, sender, sendResponse) {
+    var response;
+    try {
+        switch (request.type) {
+            case 'request':
+                const is_undefined = typeof request.key === 'undefined';
+                if (request.resource === 'tabSubresourceProtocolMap') {
+                    response = {
+                        requested_info: is_undefined ? tabSubresourceProtocolMap : tabSubresourceProtocolMap.get(request.key)
+                    };
+                } else if (request.resource === 'tabMainProtocolMap') {
+                    response = {
+                        requested_info: is_undefined ? tabMainProtocolMap : tabMainProtocolMap.get(request.key)
+                    };
+                } else if (request.resource === 'versionComparisonMap') {
+                    response = {
+                        requested_info: is_undefined ? versionComparisonMap : versionComparisonMap.get(request.key)
+                    };
+                } else {
+                    response = new Error(browser.i18n.getMessage('invalidResourceRequest'));
+                }
+                break;
+            default:
+                response = new Error(browser.i18n.getMessage('invalidMessageRequest'));
+        }
+    } catch (e) {
+        response = e;
+    }
+    sendResponse(response);
+}
+browser.runtime.onMessage.addListener(handleMessage);

@@ -38,5 +38,15 @@
         "example" : "TLSv1.3"
       }
     }
+  },
+
+  "invalidMessageRequest": {
+    "message": "Invalid message request",
+    "description": ""
+  },
+
+  "invalidResourceRequest": {
+    "message": "Invalid request",
+    "description": ""
   }
 }
