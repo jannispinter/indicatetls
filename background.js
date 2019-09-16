@@ -40,17 +40,6 @@ async function updateIcon(tabId, protocolVersion, warning) {
 }
 
 
-function getDomain(url) {
-    url = url.replace(/(https?:\/\/)?(www.)?/i, '');
-
-    if (url.indexOf('/') !== -1) {
-        return url.split('/')[0];
-    }
-
-    return url;
-}
-
-
 function getSubresourceMap(tabId) {
     /* fill table for subresources*/	
     if (!tabSubresourceProtocolMap.has(tabId)) {
@@ -63,7 +52,7 @@ function getSubresourceMap(tabId) {
 async function processSecurityInfo(details) {
 
     try {
-        var host = getDomain(details.url);
+        var host = (new URL(details.url)).host;
 
 
         let securityInfo = await browser.webRequest.getSecurityInfo(details.requestId,{});
