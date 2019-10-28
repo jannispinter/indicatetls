@@ -28,7 +28,7 @@ function insertTableRow(host, securityInfo) {
 
     addCell(row, document.createTextNode(host), securityInfo.cipherSuite);
     addCell(row, document.createTextNode(securityInfo.protocolVersion), securityInfo.cipherSuite);
-    addCell(row, document.createTextNode(securityInfo.keaGroupName), securityInfo.cipherSuite);
+    addCell(row, document.createTextNode(securityInfo.keaGroupName ? securityInfo.keaGroupName : 'Unknown'), securityInfo.cipherSuite);
     addCell(row, document.createTextNode(securityInfo.signatureSchemeName), securityInfo.cipherSuite);
     addCell(row, document.createTextNode(securityInfo.hsts ? 'Yes' : 'No'), securityInfo.cipherSuite);
     addCell(row, document.createTextNode(securityInfo.isExtendedValidation ? 'Yes' : 'No'), securityInfo.cipherSuite);
