@@ -131,8 +131,13 @@
     "description": ""
   },
 
-  "popupPrimaryConnectedTo": {
-    "message": "Verbunden mit:",
+  "popupPrimaryRunSslLabsTest": {
+    "message": "Test mit SSL Labs starten",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTestSuffix": {
+    "message": " für weitere Details.",
     "description": ""
   },
 

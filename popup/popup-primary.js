@@ -73,14 +73,9 @@ async function updateProtocolDetails(securityInfo, hostname) {
     setCheckmarkIconYellow('popup-primary-icon-hsts');
   }
 
-  const textHostname = document.getElementById('popup-hostname');
-  textHostname.textContent = hostname;
-
-  const buttonPrimary = document.querySelector('#popup-button-primary');
-  buttonPrimary.textContent = hostname;
-
   const textSSLLabsTestUrl = document.getElementById('popup-ssllabs-test-url');
   textSSLLabsTestUrl.href = 'https://www.ssllabs.com/ssltest/analyze.html?d=' + hostname;
+
 }
 
 async function updateCertificateDetails(securityInfo) {
@@ -153,7 +148,8 @@ async function updateTranslations() {
     translationElementMap.set("popupPrimaryValidity", "popup-primary-title-certificate-validity");
     //translationElementMap.set("popupPrimaryKey", "popup-primary-title-certificate-key");
     translationElementMap.set("popupPrimaryFingerprint", "popup-primary-title-certificate-fingerprint");
-    translationElementMap.set("popupPrimaryConnectedTo", "popup-primary-connected-to");
+    translationElementMap.set("popupPrimaryRunSslLabsTest", "popup-ssllabs-test-url");
+    translationElementMap.set("popupPrimaryRunSslLabsTestSuffix", "popup-primary-ssllabs-suffix");
 
     translationElementMap.forEach(function (value, key, map) {
       const message = browser.i18n.getMessage(key);
