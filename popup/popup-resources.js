@@ -59,10 +59,12 @@ function includesResourcesFromLessSecureHosts(tabInfo, subresourceMap) {
     }).catch(error => console.error(error));
 }
 
-function showWarningMessage(protocolVersion) {
-    const localized_text = browser.i18n.getMessage("popupWarningMessage", protocolVersion);
-    var warning = document.getElementById('warning');
-    var warningText = document.getElementById('warning-text');
-    warningText.innerHTML = localized_text;
-    warning.style.display = "block"; 
+async function showWarningMessage(protocolVersion) {
+    const localized_text = browser.i18n.getMessage('popupWarningMessage', protocolVersion);
+    const warning = document.getElementById('warning');
+    const warningText = document.getElementById('warning-text');
+    const warningBadge = document.getElementById('popup-button-resources-icon');
+    warningText.textContent = localized_text;
+    warning.style.display = 'block'; 
+    warningBadge.style.display = 'inline'; 
 }

@@ -132,7 +132,7 @@ async function updateCertificateDetails(securityInfo) {
 
 async function updateTranslations() {
     var translationElementMap = new Map();
-    translationElementMap.set("popupTitleResources", "popup-button-resources");
+    translationElementMap.set("popupTitleResources", "popup-button-resources-text");
     translationElementMap.set("popupPrimaryProtocol", "popup-primary-title-tls-protocol");
     translationElementMap.set("popupPrimaryConnectionState", "popup-primary-title-connection-state");
     translationElementMap.set("popupPrimaryCipherSuite", "popup-primary-title-cipher-suite");
