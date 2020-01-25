@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "IndicateTLS",
     "short_name": "IndicateTLS",
-    "version": "0.0.6",
+    "version": "0.1.0",
     "default_locale": "en",
     "description": "__MSG_extensionDescription__",
     "homepage_url": "https://github.com/jannispinter/indicatetls",
@@ -16,7 +16,8 @@
     },
     "applications": {
         "gecko": {
-            "strict_min_version": "62.0"
+            "strict_min_version": "62.0",
+            "id": "indicatetls@pinterjann.is"
         }
     },
     "background": {

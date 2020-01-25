@@ -48,5 +48,113 @@
   "invalidResourceRequest": {
     "message": "Invalid request",
     "description": ""
+  },
+
+
+  "popupTitleResources": {
+    "message": "Resources",
+    "description": ""
+  },
+
+  "popupPrimaryProtocol": {
+    "message": "Protocol:",
+    "description": ""
+  },
+
+  "popupPrimaryConnectionState": {
+    "message": "Connection state:",
+    "description": ""
+  },
+
+  "popupPrimaryCipherSuite": {
+    "message": "Cipher suite:",
+    "description": ""
+  },
+
+  "popupPrimaryKeyExchange": {
+    "message": "Key exchange:",
+    "description": ""
+  },
+
+  "popupPrimarySignatureSchema": {
+    "message": "Signature:",
+    "description": ""
+  },
+
+  "popupPrimaryPfs": {
+    "message": "Forward security:",
+    "description": ""
+  },
+
+  "popupPrimaryHsts": {
+    "message": "HSTS preload:",
+    "description": ""
+  },
+
+  "popupPrimaryCertificate": {
+    "message": "Certificate:",
+    "description": ""
+  },
+
+  "popupPrimaryTrusted": {
+    "message": "Trusted:",
+    "description": ""
+  },
+
+  "popupPrimaryCommonName": {
+    "message": "Common Name:",
+    "description": ""
+  },
+
+  "popupPrimaryIssuer": {
+    "message": "Issuer:",
+    "description": ""
+  },
+
+  "popupPrimarySerial": {
+    "message": "Serial:",
+    "description": ""
+  },
+
+  "popupPrimaryValidity": {
+    "message": "Validity from/until:",
+    "description": ""
+  },
+
+  "popupPrimaryDaysRemaining": {
+    "message": "$DAYS$ days remaining",
+    "description": "",
+    "placeholders": {
+      "days" : {
+        "content" : "$1",
+        "example" : "7"
+      }
+    }
+  },
+
+  "popupPrimaryKey": {
+    "message": "Key:",
+    "description": ""
+  },
+
+  "popupPrimaryFingerprint": {
+    "message": "Fingerprint:",
+    "description": ""
+  },
+
+  "popupPrimaryConnectedTo": {
+    "message": "Connected to:",
+    "description": ""
+  },
+
+  "yes": {
+    "message": "Yes",
+    "description": ""
+  },
+
+  "no": {
+    "message": "No",
+    "description": ""
   }
+
 }

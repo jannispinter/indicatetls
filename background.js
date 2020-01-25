@@ -54,7 +54,7 @@ async function processSecurityInfo(details) {
         var host = (new URL(details.url)).host;
 
 
-        let securityInfo = await browser.webRequest.getSecurityInfo(details.requestId,{});
+        let securityInfo = await browser.webRequest.getSecurityInfo(details.requestId,{certificateChain:false});
         if (typeof securityInfo === "undefined") {
             return;
         }
