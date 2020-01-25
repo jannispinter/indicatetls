@@ -73,6 +73,9 @@ async function updateProtocolDetails(securityInfo, hostname) {
     setCheckmarkIconYellow('popup-primary-icon-hsts');
   }
 
+  const buttonPrimary = document.querySelector('#popup-button-primary');
+  buttonPrimary.textContent = hostname;
+
   const textSSLLabsTestUrl = document.getElementById('popup-ssllabs-test-url');
   textSSLLabsTestUrl.href = 'https://www.ssllabs.com/ssltest/analyze.html?d=' + hostname;
 
