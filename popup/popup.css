@@ -65,7 +65,10 @@ body {
   vertical-align: top;
 }
 
-
+#popup-primary-certificate-fingerprint-first-line, 
+#popup-primary-certificate-fingerprint-second-line, #popup-primary-title-certificate-serial {
+  user-select: all;
+}
 
 /* Legacy */
 .protocol-table table, th, td, tr {
