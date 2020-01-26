@@ -19,4 +19,4 @@ You can download the extension from Mozilla's Add-on website [here](https://addo
 ![version](https://img.shields.io/amo/v/indicatetls)
 
 # Screenshots
-![screenshot](https://addons.cdn.mozilla.net/user-media/previews/full/231/231394.png)
+![screenshot](https://addons.cdn.mozilla.net/user-media/previews/full/231/231410.png)
