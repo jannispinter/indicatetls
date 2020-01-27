@@ -18,5 +18,8 @@ You can download the extension from Mozilla's Add-on website [here](https://addo
 
 ![version](https://img.shields.io/amo/v/indicatetls)
 
+# Translate
+Do you speak a language other than English or German? Please help us translate IndicateTLS on [Transifex](https://www.transifex.com/indicatetls/indicatetls-for-mozilla-firefox/).
+
 # Screenshots
 ![screenshot](https://addons.cdn.mozilla.net/user-media/previews/full/231/231410.png)
