@@ -11,10 +11,10 @@ body {
   padding-left: 4px;
 }
 
-.popup-primary td{
+.popup-primary td {
   valign: middle;
 }
-.popup-primary img{
+.popup-primary img {
   vertical-align: middle;
   height: 15px;
 }
@@ -65,8 +65,7 @@ body {
   vertical-align: top;
 }
 
-#popup-primary-certificate-fingerprint-first-line, 
-#popup-primary-certificate-fingerprint-second-line, #popup-primary-certificate-serial {
+.selectable {
   user-select: all;
 }
 
