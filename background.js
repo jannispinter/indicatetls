@@ -25,8 +25,14 @@ async function updateIcon(tabId, protocolVersion) {
     browser.pageAction.setPopup({tabId: tabId, popup: "/popup/popup.html"});
 }
 
+async function loadSavedSecurityInfoAndUpdateIcon(details) {
+    cached_version = tabMainProtocolMap.get(details.tabId);
+    if (typeof cached_version !== "undefined" && cached_version !== "unknown") {
+        await updateIcon(details.tabId, cached_version);
+    }
+}
+
 function getSubresourceMap(tabId) {
-    /* fill table for subresources*/	
     if (!tabSubresourceProtocolMap.has(tabId)) {
         tabSubresourceProtocolMap.set(tabId, new Map());
     }
@@ -35,63 +41,37 @@ function getSubresourceMap(tabId) {
 }
 
 async function processSecurityInfo(details) {
-
     try {
-        var host = (new URL(details.url)).host;
-
-
-        let securityInfo = await browser.webRequest.getSecurityInfo(details.requestId,{certificateChain:false});
+        const securityInfo = await browser.webRequest.getSecurityInfo(details.requestId,{});
         if (typeof securityInfo === "undefined") {
             return;
         }
 
-        /* set the icon correctly */
+        // save the security info for the current tab and update the page action icon
         if (details.type === 'main_frame') {
             tabMainProtocolMap.set(details.tabId, securityInfo.protocolVersion);
             await updateIcon(details.tabId, securityInfo.protocolVersion);
-        } else {
-            cached_version = tabMainProtocolMap.get(details.tabId);
-            if (typeof cached_version !== "undefined") {
-                await updateIcon(details.tabId, cached_version);
-            }
         }
 
-
+        // save the security info for third party hosts that were loaded within
+        // the current tab
+        const host = (new URL(details.url)).host;
         var subresourceMap = getSubresourceMap(details.tabId);
         subresourceMap.set(host, securityInfo);
         tabSubresourceProtocolMap.set(details.tabId, subresourceMap);
-
-        /*var mainProtocolVersion = versionComparisonMap.get(tabMainProtocolMap.get(details.tabId));
-        for (const securityInfo of subresourceMap.values()) {
-            if (versionComparisonMap.get(securityInfo.protocolVersion) < mainProtocolVersion) {
-                await updateIcon(details.tabId, tabMainProtocolMap.get(details.tabId), true);
-                break;
-            }
-        }*/
 
     } catch(error) {
         console.error(error);
     }
 }
 
+// clear security info when navigating to a different URL
 function handleNavigation(details) {
-    /* we are about to load a new page, delete old data */
     tabSubresourceProtocolMap.set(details.tabId, new Map());
 }
 
-browser.webRequest.onHeadersReceived.addListener(processSecurityInfo,
-    {urls: ["https://*/*"]}, ["blocking", "responseHeaders"]
-);
-
-browser.pageAction.onClicked.addListener((tab) => {
- /* future */
-});
-
-
-var filter = {  url: [{schemes: ["https"]} ]};
-browser.webNavigation.onBeforeNavigate.addListener(handleNavigation, filter);
-
-/* Event Listener for incoming messages */
+// extension internal event handling to pass information from
+// background to page action ("foreground")
 function handleMessage(request, sender, sendResponse) {
     var response;
     try {
@@ -117,9 +97,23 @@ function handleMessage(request, sender, sendResponse) {
             default:
                 response = new Error(browser.i18n.getMessage('invalidMessageRequest'));
         }
-    } catch (e) {
-        response = e;
+    } catch (error) {
+        response = error;
     }
     sendResponse(response);
 }
+
+
+browser.webRequest.onHeadersReceived.addListener(processSecurityInfo,
+    {urls: ["https://*/*"]}, ["blocking", "responseHeaders"]
+);
+
+browser.webRequest.onCompleted.addListener(loadSavedSecurityInfoAndUpdateIcon,
+    {urls: ["https://*/*"]}
+);
+
+browser.webNavigation.onBeforeNavigate.addListener(handleNavigation,
+    {url: [{schemes: ["https"]} ]}
+);
+
 browser.runtime.onMessage.addListener(handleMessage);
