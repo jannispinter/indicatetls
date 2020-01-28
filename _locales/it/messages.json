@@ -1,0 +1,165 @@
+{
+  "extensionDescription": {
+    "message": "Visualizza sulla barra degli indirizzi la versione negoziata del protocollo TLS.",
+    "description": "Description of the extension."
+  },
+
+  "popupTitleHost": {
+    "message": "Host",
+    "description": ""
+  },
+
+  "popupTitleProtocol": {
+    "message": "Protocollo",
+    "description": ""
+  },
+
+  "popupTitleKeyExchange": {
+    "message": "Scambio delle chiavi",
+    "description": ""
+  },
+
+  "popupTitleSignature": {
+    "message": "Firma",
+    "description": ""
+  },
+
+  "popupRunTest": {
+    "message": "Esegui il test",
+    "description": ""
+  },
+
+  "popupWarningMessage": {
+    "message": "Questo sito utilizza $VERSION$ ma include contenuti da server che supportano solamente versioni del protocollo meno sicure.",
+    "description": "Tells the user that something is wrong with this website.",
+    "placeholders": {
+      "version" : {
+        "content" : "$1",
+        "example" : "TLSv1.3"
+      }
+    }
+  },
+
+  "invalidMessageRequest": {
+    "message": "Richiesta del messaggio non valida",
+    "description": ""
+  },
+
+  "invalidResourceRequest": {
+    "message": "Richiesta non valida",
+    "description": ""
+  },
+
+
+  "popupTitleResources": {
+    "message": "Risorse",
+    "description": ""
+  },
+
+  "popupPrimaryProtocol": {
+    "message": "Protocollo:",
+    "description": ""
+  },
+
+  "popupPrimaryConnectionState": {
+    "message": "Stato connessione:",
+    "description": ""
+  },
+
+  "popupPrimaryCipherSuite": {
+    "message": "Suite di crittografia:",
+    "description": ""
+  },
+
+  "popupPrimaryKeyExchange": {
+    "message": "Scambio delle chiavi:",
+    "description": ""
+  },
+
+  "popupPrimarySignatureSchema": {
+    "message": "Firma:",
+    "description": ""
+  },
+
+  "popupPrimaryPfs": {
+    "message": "Forward security:",
+    "description": ""
+  },
+
+  "popupPrimaryHsts": {
+    "message": "HSTS preload:",
+    "description": ""
+  },
+
+  "popupPrimaryCertificate": {
+    "message": "Certificato:",
+    "description": ""
+  },
+
+  "popupPrimaryTrusted": {
+    "message": "Affidabile:",
+    "description": ""
+  },
+
+  "popupPrimaryCommonName": {
+    "message": "Nome Comune:",
+    "description": ""
+  },
+
+  "popupPrimaryIssuer": {
+    "message": "Emittente:",
+    "description": ""
+  },
+
+  "popupPrimarySerial": {
+    "message": "Seriale:",
+    "description": ""
+  },
+
+  "popupPrimaryValidity": {
+    "message": "Valido da/a:",
+    "description": ""
+  },
+
+  "popupPrimaryDaysRemaining": {
+    "message": "$DAYS$ giorni rimanenti",
+    "description": "",
+    "placeholders": {
+      "days" : {
+        "content" : "$1",
+        "example" : "7"
+      }
+    }
+  },
+
+  "popupPrimaryKey": {
+    "message": "Chiave:",
+    "description": ""
+  },
+
+  "popupPrimaryFingerprint": {
+    "message": "Impronta Digitale:",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTest": {
+    "message": "Esegui il test SSL Labs",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTestSuffix": {
+    "message": " per vedere più dettagli.",
+    "description": ""
+  },
+
+  "yes": {
+    "message": "Sì",
+    "description": ""
+  },
+
+  "no": {
+    "message": "No",
+    "description": ""
+  }
+
+}
