@@ -42,9 +42,17 @@ async function updateProtocolDetails(securityInfo, hostname) {
     textCipherSuiteAead.style.color = 'green';
   } else {
     textCipherSuiteAead.textContent = browser.i18n.getMessage('no');
+    textCipherSuiteAead.style.color = 'orange';
   }
 
-  document.getElementById('popup-primary-kex').textContent = securityInfo.keaGroupName == undefined ? "N/A" : securityInfo.keaGroupName;
+  const textKeyExchange = document.getElementById('popup-primary-kex');
+  if(securityInfo.keaGroupName == undefined && securityInfo.cipherSuite.includes('TLS_RSA_')) {
+      textKeyExchange.textContent = 'RSA';
+      textKeyExchange.style.color = 'orange';
+  } else {
+      textKeyExchange.textContent = securityInfo.keaGroupName == undefined ? "N/A" : securityInfo.keaGroupName;
+  }
+
   document.getElementById('popup-primary-signature').textContent = securityInfo.signatureSchemeName == undefined ? "N/A" : securityInfo.signatureSchemeName;
   if(securityInfo.signatureSchemeName != undefined && securityInfo.signatureSchemeName.includes('PKCS1')) {
     document.getElementById('popup-primary-signature').style.color = 'orange';
@@ -57,7 +65,9 @@ async function updateProtocolDetails(securityInfo, hostname) {
   }
 
   const textPFS = document.getElementById('popup-primary-pfs');
-  if(securityInfo.keaGroupName != undefined && securityInfo.keaGroupName != 'RSA') {
+  if((securityInfo.keaGroupName != undefined && securityInfo.keaGroupName != 'RSA')
+        || (securityInfo.cipherSuite != undefined && (securityInfo.cipherSuite.includes('_DHE_') || securityInfo.cipherSuite.includes('_ECDHE_')))
+        || securityInfo.protocolVersion === 'TLSv1.3') {
     textPFS.textContent = browser.i18n.getMessage('yes');
     textPFS.style.color = 'green';
   } else {
