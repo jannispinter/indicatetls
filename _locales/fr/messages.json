@@ -1,0 +1,165 @@
+{
+  "extensionDescription": {
+    "message": "Affiche la version du protocole TLS négocié dans la barre d'adresse.",
+    "description": "Description of the extension."
+  },
+
+  "popupTitleHost": {
+    "message": "Hôte",
+    "description": ""
+  },
+
+  "popupTitleProtocol": {
+    "message": "Protocole",
+    "description": ""
+  },
+
+  "popupTitleKeyExchange": {
+    "message": "Échange de clés",
+    "description": ""
+  },
+
+  "popupTitleSignature": {
+    "message": "Signature",
+    "description": ""
+  },
+
+  "popupRunTest": {
+    "message": "Lancer le test",
+    "description": ""
+  },
+
+  "popupWarningMessage": {
+    "message": "Ce site web utilise $VERSION$ mais inclus du contenu de serveurs ne supportant seulement des versions de protocole moins sécurisé.",
+    "description": "Tells the user that something is wrong with this website.",
+    "placeholders": {
+      "version" : {
+        "content" : "$1",
+        "example" : "TLSv1.3"
+      }
+    }
+  },
+
+  "invalidMessageRequest": {
+    "message": "Message de requête invalide",
+    "description": ""
+  },
+
+  "invalidResourceRequest": {
+    "message": "Requête invalide",
+    "description": ""
+  },
+
+
+  "popupTitleResources": {
+    "message": "Resources",
+    "description": ""
+  },
+
+  "popupPrimaryProtocol": {
+    "message": "Protocole:",
+    "description": ""
+  },
+
+  "popupPrimaryConnectionState": {
+    "message": "État de la connexion:",
+    "description": ""
+  },
+
+  "popupPrimaryCipherSuite": {
+    "message": "Suite de chiffrement:",
+    "description": ""
+  },
+
+  "popupPrimaryKeyExchange": {
+    "message": "Échange de clés:",
+    "description": ""
+  },
+
+  "popupPrimarySignatureSchema": {
+    "message": "Signature:",
+    "description": ""
+  },
+
+  "popupPrimaryPfs": {
+    "message": "Confidentialité persistante:",
+    "description": ""
+  },
+
+  "popupPrimaryHsts": {
+    "message": "Préchargement HSTS:",
+    "description": ""
+  },
+
+  "popupPrimaryCertificate": {
+    "message": "Certificat:",
+    "description": ""
+  },
+
+  "popupPrimaryTrusted": {
+    "message": "De confiance:",
+    "description": ""
+  },
+
+  "popupPrimaryCommonName": {
+    "message": "Nom commun:",
+    "description": ""
+  },
+
+  "popupPrimaryIssuer": {
+    "message": "Délivreur:",
+    "description": ""
+  },
+
+  "popupPrimarySerial": {
+    "message": "Série:",
+    "description": ""
+  },
+
+  "popupPrimaryValidity": {
+    "message": "Valide du/au:",
+    "description": ""
+  },
+
+  "popupPrimaryDaysRemaining": {
+    "message": "$DAYS$ jours restant",
+    "description": "",
+    "placeholders": {
+      "days" : {
+        "content" : "$1",
+        "example" : "7"
+      }
+    }
+  },
+
+  "popupPrimaryKey": {
+    "message": "Clé:",
+    "description": ""
+  },
+
+  "popupPrimaryFingerprint": {
+    "message": "Empreinte:",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTest": {
+    "message": "Lancer le test SSL Labs",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTestSuffix": {
+    "message": " pour voir plus de détails.",
+    "description": ""
+  },
+
+  "yes": {
+    "message": "Oui",
+    "description": ""
+  },
+
+  "no": {
+    "message": "Non",
+    "description": ""
+  }
+
+}
