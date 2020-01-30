@@ -12,17 +12,16 @@ function openTab(evt, tabName) {
   evt.currentTarget.className += " active";
 }
 
-
-function updatePopupPrimaryTab(securityInfo, hostname) {
+function updatePopupSecurityInfo(securityInfo, hostname) {
   updateProtocolDetails(securityInfo, hostname);
   updateCertificateDetails(securityInfo);
   updateTranslations();
 }
 
 async function updateProtocolDetails(securityInfo, hostname) {
-  const textProtocolVersion = document.getElementById('popup-primary-protcol-version');
-  textProtocolVersion.textContent = securityInfo.protocolVersion;
-  textProtocolVersion.style.color = protocolColorMap.get(securityInfo.protocolVersion);
+  const textTlsProtocolVersion = document.getElementById('popup-primary-protcol-tls-version');
+  textTlsProtocolVersion.textContent = securityInfo.protocolVersion;
+  textTlsProtocolVersion.style.color = protocolColorMap.get(securityInfo.protocolVersion);
   if(securityInfo.protocolVersion === 'TLSv1' || securityInfo.protocolVersion === 'SSLv3') {
     setCheckmarkIconRed('popup-primary-icon-protocol');
   } else if (securityInfo.protocolVersion === 'TLSv1.1') {
@@ -138,8 +137,10 @@ async function updateCertificateDetails(securityInfo) {
 
   const textCertificateFingerprintFirstLine = document.getElementById('popup-primary-certificate-fingerprint-first-line');
   const textCertificateFingerprintSecondLine = document.getElementById('popup-primary-certificate-fingerprint-second-line');
+  const textCertificateFingerprintCrtShUrl = document.getElementById('popup-primary-certificate-fingerprint-crt-sh-url');
   textCertificateFingerprintFirstLine.textContent = serverCertificate.fingerprint.sha256.substr(0,48);
   textCertificateFingerprintSecondLine.textContent = serverCertificate.fingerprint.sha256.substr(48);
+  textCertificateFingerprintCrtShUrl.href = "https://crt.sh/?q=" + serverCertificate.fingerprint.sha256;
 }
 
 

@@ -20,11 +20,14 @@ function updatePopup(tabInfo) {
         var subresourceMap = reply.requested_info;
         for (const[domain, securityInfo] of subresourceMap.entries()) {
             insertTableRow(domain, securityInfo);
-            if(domain === (new URL(tabInfo.url)).host) {
-                updatePopupPrimaryTab(securityInfo, domain);
-            }
         }
         includesResourcesFromLessSecureHosts(tabInfo, subresourceMap);
+    }).catch(error => console.error(error));
+
+    request('tabMainProtocolMap', tabInfo.id).then((reply) => {
+        const securityInfo = reply.requested_info;
+        const domain = (new URL(tabInfo.url)).host;
+        updatePopupSecurityInfo(securityInfo, domain);
     }).catch(error => console.error(error));
 
 }

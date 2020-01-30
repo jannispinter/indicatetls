@@ -26,7 +26,7 @@ async function updateIcon(tabId, protocolVersion) {
 }
 
 async function loadSavedSecurityInfoAndUpdateIcon(details) {
-    cached_version = tabMainProtocolMap.get(details.tabId);
+    cached_version = tabMainProtocolMap.get(details.tabId).protocolVersion;
     if (typeof cached_version !== "undefined" && cached_version !== "unknown") {
         await updateIcon(details.tabId, cached_version);
     }
@@ -49,7 +49,7 @@ async function processSecurityInfo(details) {
 
         // save the security info for the current tab and update the page action icon
         if (details.type === 'main_frame') {
-            tabMainProtocolMap.set(details.tabId, securityInfo.protocolVersion);
+            tabMainProtocolMap.set(details.tabId, securityInfo);
             await updateIcon(details.tabId, securityInfo.protocolVersion);
         }
 

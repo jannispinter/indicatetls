@@ -15,7 +15,7 @@
         <table class="popup-primary">
             <tr>
                 <td class="popup-primary-checkmark-column"><img id="popup-primary-icon-protocol" src="../icons/checkmark_green.png"/></td>
-                <td><strong><span id="popup-primary-title-tls-protocol"></span></strong> <span id="popup-primary-protcol-version">N/A</span></td>
+                <td><strong><span id="popup-primary-title-tls-protocol"></span></strong> <span id="popup-primary-protcol-tls-version">N/A</span></td>
             </tr>
             <tr>
                 <td class="popup-primary-checkmark-column"><img id="popup-primary-icon-connection-state" src="../icons/checkmark_green.png"/></td>
@@ -79,7 +79,11 @@
                             <td><span id="popup-primary-certificate-keylength">N/A</span></td>
                         </tr>-->
                         <tr>
-                            <td style="vertical-align:top"><span id="popup-primary-title-certificate-fingerprint"></span></td>
+                            <td style="vertical-align:top">
+                                <a id="popup-primary-certificate-fingerprint-crt-sh-url" href="#">
+                                    <span id="popup-primary-title-certificate-fingerprint"></span>
+                                </a>
+                            </td>
                             <td>
                                 <span id="popup-primary-certificate-fingerprint-first-line" class="selectable">N/A</span><br>
                                 <span id="popup-primary-certificate-fingerprint-second-line" class="selectable">N/A</span>
