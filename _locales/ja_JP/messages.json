@@ -1,0 +1,165 @@
+{
+  "extensionDescription": {
+    "message": "ページに使うTLSプロトコルバージョンをアドレスバーに表示します。",
+    "description": "Description of the extension."
+  },
+
+  "popupTitleHost": {
+    "message": "ホスト",
+    "description": ""
+  },
+
+  "popupTitleProtocol": {
+    "message": "プロトコル",
+    "description": ""
+  },
+
+  "popupTitleKeyExchange": {
+    "message": "鍵交換",
+    "description": ""
+  },
+
+  "popupTitleSignature": {
+    "message": "署名",
+    "description": ""
+  },
+
+  "popupRunTest": {
+    "message": "テストを実行します",
+    "description": ""
+  },
+
+  "popupWarningMessage": {
+    "message": "このウエブサイトは $VERSION$を使いますが安全性の低いプロトコルバージョンのみを使用するサーバーからの内容を含めています。",
+    "description": "Tells the user that something is wrong with this website.",
+    "placeholders": {
+      "version" : {
+        "content" : "$1",
+        "example" : "TLSv1.3"
+      }
+    }
+  },
+
+  "invalidMessageRequest": {
+    "message": "無効な要求メッセージ",
+    "description": ""
+  },
+
+  "invalidResourceRequest": {
+    "message": "要求無効",
+    "description": ""
+  },
+
+
+  "popupTitleResources": {
+    "message": "リソース",
+    "description": ""
+  },
+
+  "popupPrimaryProtocol": {
+    "message": "プロトコル：",
+    "description": ""
+  },
+
+  "popupPrimaryConnectionState": {
+    "message": "接続状態：",
+    "description": ""
+  },
+
+  "popupPrimaryCipherSuite": {
+    "message": "暗号方式：",
+    "description": ""
+  },
+
+  "popupPrimaryKeyExchange": {
+    "message": "鍵交換：",
+    "description": ""
+  },
+
+  "popupPrimarySignatureSchema": {
+    "message": "署名：",
+    "description": ""
+  },
+
+  "popupPrimaryPfs": {
+    "message": "前方秘匿性：",
+    "description": ""
+  },
+
+  "popupPrimaryHsts": {
+    "message": "HSTSプリロード：",
+    "description": ""
+  },
+
+  "popupPrimaryCertificate": {
+    "message": "証明書：",
+    "description": ""
+  },
+
+  "popupPrimaryTrusted": {
+    "message": "信用：",
+    "description": ""
+  },
+
+  "popupPrimaryCommonName": {
+    "message": "一般名：",
+    "description": ""
+  },
+
+  "popupPrimaryIssuer": {
+    "message": "発行者：",
+    "description": ""
+  },
+
+  "popupPrimarySerial": {
+    "message": "シリアル：",
+    "description": ""
+  },
+
+  "popupPrimaryValidity": {
+    "message": "から／までの有効：",
+    "description": ""
+  },
+
+  "popupPrimaryDaysRemaining": {
+    "message": "$DAYS$残り",
+    "description": "",
+    "placeholders": {
+      "days" : {
+        "content" : "$1",
+        "example" : "7"
+      }
+    }
+  },
+
+  "popupPrimaryKey": {
+    "message": "鍵：",
+    "description": ""
+  },
+
+  "popupPrimaryFingerprint": {
+    "message": "指紋：",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTest": {
+    "message": "SSL Labsのテストを実行すると",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTestSuffix": {
+    "message": "詳しい情報を見られます。",
+    "description": ""
+  },
+
+  "yes": {
+    "message": "はい",
+    "description": ""
+  },
+
+  "no": {
+    "message": "いいえ",
+    "description": ""
+  }
+
+}
