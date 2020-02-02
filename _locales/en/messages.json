@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "Displays negotiated TLS protocol version in the adress bar.",
+    "message": "Displays negotiated TLS protocol version in the address bar.",
     "description": "Description of the extension."
   },
 
@@ -82,7 +82,7 @@
   },
 
   "popupPrimaryPfs": {
-    "message": "Forward security:",
+    "message": "Forward secrecy:",
     "description": ""
   },
 
