@@ -1,0 +1,165 @@
+{
+    "extensionDescription": {
+      "message": "在地址栏当中展示TLS版本信息。",
+      "description": "Description of the extension."
+    },
+
+    "popupTitleHost": {
+      "message": "主机",
+      "description": ""
+    },
+
+    "popupTitleProtocol": {
+      "message": "协议",
+      "description": ""
+    },
+
+    "popupTitleKeyExchange": {
+      "message": "密钥交换协议",
+      "description": ""
+    },
+
+    "popupTitleSignature": {
+      "message": "签名算法",
+      "description": ""
+    },
+
+    "popupRunTest": {
+      "message": "测试",
+      "description": ""
+    },
+
+    "popupWarningMessage": {
+      "message": "该网站使用 $VERSION$ 但是包含了使用安全性稍低的协议版本的内容。",
+      "description": "Tells the user that something is wrong with this website.",
+      "placeholders": {
+        "version" : {
+          "content" : "$1",
+          "example" : "TLSv1.3"
+        }
+      }
+    },
+
+    "invalidMessageRequest": {
+      "message": "无效消息请求",
+      "description": ""
+    },
+
+    "invalidResourceRequest": {
+      "message": "无效请求",
+      "description": ""
+    },
+
+
+    "popupTitleResources": {
+      "message": "页面资源",
+      "description": ""
+    },
+
+    "popupPrimaryProtocol": {
+      "message": "协议：",
+      "description": ""
+    },
+
+    "popupPrimaryConnectionState": {
+      "message": "连接状态：",
+      "description": ""
+    },
+
+    "popupPrimaryCipherSuite": {
+      "message": "密码套件：",
+      "description": ""
+    },
+
+    "popupPrimaryKeyExchange": {
+      "message": "密钥交换协议：",
+      "description": ""
+    },
+
+    "popupPrimarySignatureSchema": {
+      "message": "签名算法：",
+      "description": ""
+    },
+
+    "popupPrimaryPfs": {
+      "message": "前向安全性：",
+      "description": ""
+    },
+
+    "popupPrimaryHsts": {
+      "message": "HSTS预加载：",
+      "description": ""
+    },
+
+    "popupPrimaryCertificate": {
+      "message": "证书：",
+      "description": ""
+    },
+
+    "popupPrimaryTrusted": {
+      "message": "可信性：",
+      "description": ""
+    },
+
+    "popupPrimaryCommonName": {
+      "message": "通用名称：",
+      "description": ""
+    },
+
+    "popupPrimaryIssuer": {
+      "message": "颁发者：",
+      "description": ""
+    },
+
+    "popupPrimarySerial": {
+      "message": "序列号：",
+      "description": ""
+    },
+
+    "popupPrimaryValidity": {
+      "message": "有效期：",
+      "description": ""
+    },
+
+    "popupPrimaryDaysRemaining": {
+      "message": "剩余 $DAYS$ 天",
+      "description": "",
+      "placeholders": {
+        "days" : {
+          "content" : "$1",
+          "example" : "7"
+        }
+      }
+    },
+
+    "popupPrimaryKey": {
+      "message": "密钥：",
+      "description": ""
+    },
+
+    "popupPrimaryFingerprint": {
+      "message": "指纹：",
+      "description": ""
+    },
+
+    "popupPrimaryRunSslLabsTest": {
+      "message": "运行 SSL Labs 测试",
+      "description": ""
+    },
+
+    "popupPrimaryRunSslLabsTestSuffix": {
+      "message": " 以查阅更多细节。",
+      "description": ""
+    },
+
+    "yes": {
+      "message": "是",
+      "description": ""
+    },
+
+    "no": {
+      "message": "否",
+      "description": ""
+    }
+
+  }
