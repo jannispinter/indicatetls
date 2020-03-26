@@ -3,7 +3,6 @@ versionIconMap.set('TLSv1.3', 'icons/tlsv13.png');
 versionIconMap.set('TLSv1.2', 'icons/tlsv12.png'); 
 versionIconMap.set('TLSv1.1', 'icons/tlsv11.png'); 
 versionIconMap.set('TLSv1', 'icons/tlsv10.png'); 
-versionIconMap.set('SSLv3', 'icons/sslv3.png'); /* no longer supported */
 versionIconMap.set('unknown', 'icons/tlsunknown.png');
 
 var versionComparisonMap = new Map();
@@ -11,7 +10,6 @@ versionComparisonMap.set('TLSv1.3', 13);
 versionComparisonMap.set('TLSv1.2', 12); 
 versionComparisonMap.set('TLSv1.1', 11); 
 versionComparisonMap.set('TLSv1', 10); 
-versionComparisonMap.set('SSLv3', 3); 
 versionComparisonMap.set('unknown', 0);
 
 var tabMainProtocolMap = new Map();

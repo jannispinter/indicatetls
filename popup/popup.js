@@ -3,7 +3,6 @@ protocolColorMap.set('TLSv1.3', '#26de81');
 protocolColorMap.set('TLSv1.2', '#fbc02d'); 
 protocolColorMap.set('TLSv1.1', '#ff0000'); 
 protocolColorMap.set('TLSv1', '#ff0000'); 
-protocolColorMap.set('SSLv3', '#ff0000');
 
 function request(resource, key) {
     const request = browser.runtime.sendMessage({
