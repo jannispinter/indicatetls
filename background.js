@@ -60,7 +60,7 @@ async function processSecurityInfo(details) {
 
         // save the security info for the current tab and update the page action icon
         if (details.type === 'main_frame') {
-            tabMainProtocolMap.set(details.tabId, securityInfo.protocolVersion);
+            tabMainProtocolMap.set(details.tabId, securityInfo);
             await updateIcon(details.tabId, securityInfo.protocolVersion, false);
         } else {
             cached_version = tabMainProtocolMap.get(details.tabId);
