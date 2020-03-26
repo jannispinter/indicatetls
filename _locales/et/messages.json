@@ -1,0 +1,165 @@
+{
+  "extensionDescription": {
+    "message": "Kuvab kooskõlastatud TLS-protokolli versiooni aadressiribal.",
+    "description": "Description of the extension."
+  },
+
+  "popupTitleHost": {
+    "message": "Host",
+    "description": ""
+  },
+
+  "popupTitleProtocol": {
+    "message": "Protokoll",
+    "description": ""
+  },
+
+  "popupTitleKeyExchange": {
+    "message": "Võtmekehtestus",
+    "description": ""
+  },
+
+  "popupTitleSignature": {
+    "message": "Signatuur",
+    "description": ""
+  },
+
+  "popupRunTest": {
+    "message": "Käivita test",
+    "description": ""
+  },
+
+  "popupWarningMessage": {
+    "message": "See veebileht kasutab  $VERSION$, kuid sisaldab sisu serveritest, mis kasutavad vähem turvalisi protokolliversioone.",
+    "description": "Tells the user that something is wrong with this website.",
+    "placeholders": {
+      "version" : {
+        "content" : "$1",
+        "example" : "TLSv1.3"
+      }
+    }
+  },
+
+  "invalidMessageRequest": {
+    "message": "Sobimatu sõnumitaotlus",
+    "description": ""
+  },
+
+  "invalidResourceRequest": {
+    "message": "Sobimatu taotlus",
+    "description": ""
+  },
+
+
+  "popupTitleResources": {
+    "message": "Ressursid",
+    "description": ""
+  },
+
+  "popupPrimaryProtocol": {
+    "message": "Protokoll:",
+    "description": ""
+  },
+
+  "popupPrimaryConnectionState": {
+    "message": "Ühenduse olek:",
+    "description": ""
+  },
+
+  "popupPrimaryCipherSuite": {
+    "message": "Šifrikomplekt:",
+    "description": ""
+  },
+
+  "popupPrimaryKeyExchange": {
+    "message": "Võtmekehtestus:",
+    "description": ""
+  },
+
+  "popupPrimarySignatureSchema": {
+    "message": "Signatuur:",
+    "description": ""
+  },
+
+  "popupPrimaryPfs": {
+    "message": "Tulevikusalastus:",
+    "description": ""
+  },
+
+  "popupPrimaryHsts": {
+    "message": "HSTS-eelloend:",
+    "description": ""
+  },
+
+  "popupPrimaryCertificate": {
+    "message": "Sertifikaat:",
+    "description": ""
+  },
+
+  "popupPrimaryTrusted": {
+    "message": "Usaldatud:",
+    "description": ""
+  },
+
+  "popupPrimaryCommonName": {
+    "message": "Üldnimi:",
+    "description": ""
+  },
+
+  "popupPrimaryIssuer": {
+    "message": "Väljaandja:",
+    "description": ""
+  },
+
+  "popupPrimarySerial": {
+    "message": "Seerianumber:",
+    "description": ""
+  },
+
+  "popupPrimaryValidity": {
+    "message": "Kehtivus alates/kuni:",
+    "description": ""
+  },
+
+  "popupPrimaryDaysRemaining": {
+    "message": "$DAYS$ päeva jäänud",
+    "description": "",
+    "placeholders": {
+      "days" : {
+        "content" : "$1",
+        "example" : "7"
+      }
+    }
+  },
+
+  "popupPrimaryKey": {
+    "message": "Võti:",
+    "description": ""
+  },
+
+  "popupPrimaryFingerprint": {
+    "message": "Sõrmejälg:",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTest": {
+    "message": "Käivita SSL Labs test,",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTestSuffix": {
+    "message": "et näha rohkem andmeid.",
+    "description": ""
+  },
+
+  "yes": {
+    "message": "Jah",
+    "description": ""
+  },
+
+  "no": {
+    "message": "Ei",
+    "description": ""
+  }
+
+}
