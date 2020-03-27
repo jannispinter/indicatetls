@@ -20,6 +20,7 @@ versionComparisonMap.set('TLSv1', 10);
 versionComparisonMap.set('unknown', 0);
 
 var tabMainProtocolMap = new Map();
+var tabMainDowngradedMap = new Map();
 var tabSubresourceProtocolMap = new Map();
 
 async function updateIcon(tabId, protocolVersion, warning) {
@@ -39,7 +40,11 @@ async function updateIcon(tabId, protocolVersion, warning) {
 async function loadSavedSecurityInfoAndUpdateIcon(details) {
     cached_version = tabMainProtocolMap.get(details.tabId).protocolVersion;
     if (typeof cached_version !== "undefined" && cached_version !== "unknown") {
-        await updateIcon(details.tabId, cached_version);
+        if (tabMainDowngradedMap.has(details.tabId)) {
+            await updateIcon(details.tabId, cached_version, tabMainDowngradedMap.get(details.tabId));
+        } else {
+            await updateIcon(details.tabId, cached_version, false);
+        }
     }
 }
 
@@ -61,12 +66,8 @@ async function processSecurityInfo(details) {
         // save the security info for the current tab and update the page action icon
         if (details.type === 'main_frame') {
             tabMainProtocolMap.set(details.tabId, securityInfo);
+            tabMainDowngradedMap.set(details.tabId, false);
             await updateIcon(details.tabId, securityInfo.protocolVersion, false);
-        } else {
-            cached_version = tabMainProtocolMap.get(details.tabId);
-            if (typeof cached_version !== "undefined") {
-                await updateIcon(details.tabId, cached_version, false);
-            }
         }
 
         // save the security info for third party hosts that were loaded within
@@ -76,10 +77,11 @@ async function processSecurityInfo(details) {
         subresourceMap.set(host, securityInfo);
         tabSubresourceProtocolMap.set(details.tabId, subresourceMap);
 
-        var mainProtocolVersion = versionComparisonMap.get(tabMainProtocolMap.get(details.tabId));
+        var mainProtocolVersion = versionComparisonMap.get(tabMainProtocolMap.get(details.tabId).protocolVersion);
         for (const securityInfo of subresourceMap.values()) {
             if (versionComparisonMap.get(securityInfo.protocolVersion) < mainProtocolVersion) {
-                await updateIcon(details.tabId, tabMainProtocolMap.get(details.tabId), true);
+                tabMainDowngradedMap.set(details.tabId, true);
+                await updateIcon(details.tabId, tabMainProtocolMap.get(details.tabId).protocolVersion, true);
                 break;
             }
         }
