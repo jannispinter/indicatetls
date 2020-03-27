@@ -10,7 +10,6 @@ versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_warning.png');
 versionIconWarningMap.set('TLSv1.2', 'icons/tlsv12_warning.png'); 
 versionIconWarningMap.set('TLSv1.1', 'icons/tlsv11_warning.png'); 
 versionIconWarningMap.set('TLSv1', 'icons/tlsv10_warning.png'); 
-versionIconWarningMap.set('unknown', 'icons/tlsunknown.png');
 
 var versionComparisonMap = new Map();
 versionComparisonMap.set('TLSv1.3', 13); 
