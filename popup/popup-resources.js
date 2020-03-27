@@ -45,7 +45,7 @@ function clearTable() {
 
 function includesResourcesFromLessSecureHosts(tabInfo, subresourceMap) {
     request('tabMainProtocolMap', tabInfo.id).then(reply => {
-        const tabMainProtocolMap = reply.requested_info;
+        const tabMainProtocolMap = reply.requested_info.protocolVersion;
         request('versionComparisonMap').then((reply) => {
             const versionComparisonMap = reply.requested_info;
             const mainProtocolVersion = versionComparisonMap.get(tabMainProtocolMap);

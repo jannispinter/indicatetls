@@ -3,24 +3,35 @@ versionIconMap.set('TLSv1.3', 'icons/tlsv13.png');
 versionIconMap.set('TLSv1.2', 'icons/tlsv12.png'); 
 versionIconMap.set('TLSv1.1', 'icons/tlsv11.png'); 
 versionIconMap.set('TLSv1', 'icons/tlsv10.png'); 
-versionIconMap.set('SSLv3', 'icons/sslv3.png'); /* no longer supported */
 versionIconMap.set('unknown', 'icons/tlsunknown.png');
+
+var versionIconWarningMap = new Map();
+versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_warning.png'); 
+versionIconWarningMap.set('TLSv1.2', 'icons/tlsv12_warning.png'); 
+versionIconWarningMap.set('TLSv1.1', 'icons/tlsv11_warning.png'); 
+versionIconWarningMap.set('TLSv1', 'icons/tlsv10_warning.png'); 
 
 var versionComparisonMap = new Map();
 versionComparisonMap.set('TLSv1.3', 13); 
 versionComparisonMap.set('TLSv1.2', 12); 
 versionComparisonMap.set('TLSv1.1', 11); 
 versionComparisonMap.set('TLSv1', 10); 
-versionComparisonMap.set('SSLv3', 3); 
 versionComparisonMap.set('unknown', 0);
 
 var tabMainProtocolMap = new Map();
+var tabMainDowngradedMap = new Map();
 var tabSubresourceProtocolMap = new Map();
 
-async function updateIcon(tabId, protocolVersion) {
-    browser.pageAction.setIcon({
-        tabId: tabId, path: versionIconMap.get(protocolVersion)
-    }); 
+async function updateIcon(tabId, protocolVersion, warning) {
+    if (warning) {
+        browser.pageAction.setIcon({
+            tabId: tabId, path: versionIconWarningMap.get(protocolVersion)
+        });
+    } else {
+        browser.pageAction.setIcon({
+            tabId: tabId, path: versionIconMap.get(protocolVersion)
+        }); 
+    }
     browser.pageAction.setTitle({tabId: tabId, title: protocolVersion});
     browser.pageAction.setPopup({tabId: tabId, popup: "/popup/popup.html"});
 }
@@ -28,7 +39,11 @@ async function updateIcon(tabId, protocolVersion) {
 async function loadSavedSecurityInfoAndUpdateIcon(details) {
     cached_version = tabMainProtocolMap.get(details.tabId).protocolVersion;
     if (typeof cached_version !== "undefined" && cached_version !== "unknown") {
-        await updateIcon(details.tabId, cached_version);
+        if (tabMainDowngradedMap.has(details.tabId)) {
+            await updateIcon(details.tabId, cached_version, tabMainDowngradedMap.get(details.tabId));
+        } else {
+            await updateIcon(details.tabId, cached_version, false);
+        }
     }
 }
 
@@ -50,7 +65,8 @@ async function processSecurityInfo(details) {
         // save the security info for the current tab and update the page action icon
         if (details.type === 'main_frame') {
             tabMainProtocolMap.set(details.tabId, securityInfo);
-            await updateIcon(details.tabId, securityInfo.protocolVersion);
+            tabMainDowngradedMap.set(details.tabId, false);
+            await updateIcon(details.tabId, securityInfo.protocolVersion, false);
         }
 
         // save the security info for third party hosts that were loaded within
@@ -59,6 +75,15 @@ async function processSecurityInfo(details) {
         var subresourceMap = getSubresourceMap(details.tabId);
         subresourceMap.set(host, securityInfo);
         tabSubresourceProtocolMap.set(details.tabId, subresourceMap);
+
+        var mainProtocolVersion = versionComparisonMap.get(tabMainProtocolMap.get(details.tabId).protocolVersion);
+        for (const securityInfo of subresourceMap.values()) {
+            if (versionComparisonMap.get(securityInfo.protocolVersion) < mainProtocolVersion) {
+                tabMainDowngradedMap.set(details.tabId, true);
+                await updateIcon(details.tabId, tabMainProtocolMap.get(details.tabId).protocolVersion, true);
+                break;
+            }
+        }
 
     } catch(error) {
         console.error(error);
