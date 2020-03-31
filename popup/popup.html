@@ -1,23 +1,117 @@
 <!DOCTYPE html>
-
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="popup.css"/>
-  </head>
 
-  <body>
-    <table id="subresource-table" class="protocol-table">
-      <tr>
-        <th>Domain</th>
-        <th>Protocol</th>
-      </tr>
-    </table>
-    <div id="warning" class="warning">
-      <div class="warning-triangle"><img src="/icons/triangle.png"></div>
-      <div id="warning-text" class="warning-text"></div>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+    <div class="tab">
+        <button id="popup-button-primary" class="tab-button">Primary</button>
+        <button id="popup-button-resources" class="tab-button"><span id="popup-button-resources-text">Resources</span><img id="popup-button-resources-icon" src="/icons/triangle.png"></div></button>
     </div>
+    <div id="primary" class="tab-content">
+        <table class="popup-primary">
+            <tr>
+                <td class="popup-primary-checkmark-column"><img id="popup-primary-icon-protocol" src="../icons/checkmark_green.png"/></td>
+                <td><strong><span id="popup-primary-title-tls-protocol"></span></strong> <span id="popup-primary-protcol-tls-version">N/A</span></td>
+            </tr>
+            <tr>
+                <td class="popup-primary-checkmark-column"><img id="popup-primary-icon-connection-state" src="../icons/checkmark_green.png"/></td>
+                <td><strong><span id="popup-primary-title-connection-state"></span></strong> <span id="popup-primary-connection-state" style="color:green">N/A</span></td>
+            </tr>
+            <tr>
+                <td class="popup-primary-checkmark-column"><img id="popup-primary-icon-cipher-suite" src="../icons/checkmark_green.png"/></td>
+                <td><strong><span id="popup-primary-title-cipher-suite"></span></strong> <span id="popup-primary-cipher-suite">N/A</span>
+                    <br>
+                    <table class="popup-primary-cipher-table">
+                        <tr>
+                            <td><span id="popup-primary-title-key-exchange"></span></td>
+                            <td><span id="popup-primary-kex">N/A</span></td>
+                        </tr>
+                        <tr>
+                            <td>AEAD:</td>
+                            <td><span id="popup-primary-cipher-suite-aead">N/A</span></td>
+                        </tr>
+                        <tr>
+                            <td><span id="popup-primary-title-signature-schema"></span></td>
+                            <td><span id="popup-primary-signature">N/A</span></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="popup-primary-checkmark-column"><img id="popup-primary-icon-pfs" src="../icons/checkmark_green.png"/></td>
+                <td><strong><span id="popup-primary-title-pfs"></span></strong> <span id="popup-primary-pfs">N/A</span></td>
+            </tr>
+            <tr>
+                <td class="popup-primary-checkmark-column"><img id="popup-primary-icon-hsts" src="../icons/checkmark_green.png"/></td>
+                <td><strong><span id="popup-primary-title-hsts"></span></strong> <span id="popup-primary-hsts">N/A</span></td>
+            </tr>
+            <tr>
+                <td class="popup-primary-checkmark-column"><img id="popup-primary-icon-certificate" src="../icons/checkmark_green.png"/></td>
+                <td><strong><span id="popup-primary-title-certificate"></span></strong>
+                    <br>
+                    <table class="popup-primary-certificate-table">
+                        <tr>
+                            <td><span id="popup-primary-title-certificate-trusted"></span></td>
+                            <td><span id="popup-primary-certificate-trusted">N/A</span><span id="popup-primary-certificate-ev"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span id="popup-primary-title-certificate-cn"></span></td>
+                            <td><span id="popup-primary-certificate-cn">N/A</span></td>
+                        </tr>
+                        <tr>
+                            <td><span id="popup-primary-title-certificate-issuer"></span></td>
+                            <td><span id="popup-primary-certificate-issuer">N/A</span></td>
+                        </tr>
+                        <tr>
+                            <td><span id="popup-primary-title-certificate-serial"></span></td>
+                            <td><span id="popup-primary-certificate-serial" class="selectable">N/A</span></td>
+                        </tr>
+                        <tr>
+                            <td><span id="popup-primary-title-certificate-validity"></span></td>
+                            <td><span id="popup-primary-certificate-valid-from">N/A</span> ~ <span id="popup-primary-certificate-expires">N/A</span> (<span id="popup-primary-certificate-days-remaining"></span>)</td>
+                        </tr>
+                        <!--<tr>
+                            <td><span id="popup-primary-title-certificate-key"></span></td>
+                            <td><span id="popup-primary-certificate-keylength">N/A</span></td>
+                        </tr>-->
+                        <tr>
+                            <td style="vertical-align:top">
+                                <a id="popup-primary-certificate-fingerprint-crt-sh-url" href="#">
+                                    <span id="popup-primary-title-certificate-fingerprint"></span>
+                                </a>
+                            </td>
+                            <td>
+                                <span id="popup-primary-certificate-fingerprint-first-line" class="selectable">N/A</span><br>
+                                <span id="popup-primary-certificate-fingerprint-second-line" class="selectable">N/A</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div style="text-align:right"><strong><small><a id="popup-ssllabs-test-url" href="#"></a><span id="popup-primary-ssllabs-suffix"/></strong></small></div>
+    </div>
+
+    <div id="resources" class="tab-content">
+        <table id="subresource-table" class="protocol-table">
+            <tr>
+                <th>Domain</th>
+                <th>Protocol</th>
+            </tr>
+        </table>
+        <div id="warning" class="warning">
+            <div class="warning-triangle"><img src="/icons/triangle.png"></div>
+            <div id="warning-text" class="warning-text"></div>
+        </div>
+    </div>
+
     <script src="popup.js"></script>
-  </body>
+    <script src="popup-resources.js"></script>
+    <script src="popup-primary.js"></script>
+</body>
 
 </html>

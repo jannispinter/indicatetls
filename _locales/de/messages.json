@@ -38,6 +38,117 @@
         "example" : "TLSv1.3"
       }
     }
+  },
+
+  "popupTitleResources": {
+    "message": "Resourcen",
+    "description": ""
+  },
+
+  "popupPrimaryProtocol": {
+    "message": "Protokoll:",
+    "description": ""
+  },
+
+  "popupPrimaryConnectionState": {
+    "message": "Verbindungsstatus:",
+    "description": ""
+  },
+
+  "popupPrimaryCipherSuite": {
+    "message": "Cipher Suite:",
+    "description": ""
+  },
+
+  "popupPrimaryKeyExchange": {
+    "message": "Schlüsselaustausch:",
+    "description": ""
+  },
+
+  "popupPrimarySignatureSchema": {
+    "message": "Signaturschema:",
+    "description": ""
+  },
+
+  "popupPrimaryPfs": {
+    "message": "Forward Security:",
+    "description": ""
+  },
+
+  "popupPrimaryHsts": {
+    "message": "HSTS Preload:",
+    "description": ""
+  },
+
+  "popupPrimaryCertificate": {
+    "message": "Zertifikat:",
+    "description": ""
+  },
+
+  "popupPrimaryTrusted": {
+    "message": "Vertrauenswürdig:",
+    "description": ""
+  },
+
+  "popupPrimaryCommonName": {
+    "message": "Common Name:",
+    "description": ""
+  },
+
+  "popupPrimaryIssuer": {
+    "message": "Aussteller:",
+    "description": ""
+  },
+
+  "popupPrimarySerial": {
+    "message": "Seriennummer:",
+    "description": ""
+  },
+
+  "popupPrimaryValidity": {
+    "message": "Gültigkeit von/bis:",
+    "description": ""
+  },
+
+  "popupPrimaryDaysRemaining": {
+    "message": "$DAYS$ Tage verbleibend",
+    "description": "",
+    "placeholders": {
+      "days" : {
+        "content" : "$1",
+        "example" : "7"
+      }
+    }
+  },
+
+  "popupPrimaryKey": {
+    "message": "Schlüssel:",
+    "description": ""
+  },
+
+  "popupPrimaryFingerprint": {
+    "message": "Fingerabdruck:",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTest": {
+    "message": "Test mit SSL Labs starten",
+    "description": ""
+  },
+
+  "popupPrimaryRunSslLabsTestSuffix": {
+    "message": " für weitere Details.",
+    "description": ""
+  },
+
+  "yes": {
+    "message": "Ja",
+    "description": ""
+  },
+
+  "no": {
+    "message": "Nein",
+    "description": ""
   }
 
 }

@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "Displays negotiated TLS protocol version in the address bar.",
+    "message": "Visualizza sulla barra degli indirizzi la versione negoziata del protocollo TLS.",
     "description": "Description of the extension."
   },
 
@@ -10,27 +10,27 @@
   },
 
   "popupTitleProtocol": {
-    "message": "Protocol",
+    "message": "Protocollo",
     "description": ""
   },
 
   "popupTitleKeyExchange": {
-    "message": "Key Exchange",
+    "message": "Scambio delle chiavi",
     "description": ""
   },
 
   "popupTitleSignature": {
-    "message": "Signature",
+    "message": "Firma",
     "description": ""
   },
 
   "popupRunTest": {
-    "message": "Run test",
+    "message": "Esegui il test",
     "description": ""
   },
 
   "popupWarningMessage": {
-    "message": "This website uses $VERSION$ but includes content from servers that only support less secure protocol versions.",
+    "message": "Questo sito utilizza $VERSION$ ma include contenuti da server che supportano solamente versioni del protocollo meno sicure.",
     "description": "Tells the user that something is wrong with this website.",
     "placeholders": {
       "version" : {
@@ -41,48 +41,48 @@
   },
 
   "invalidMessageRequest": {
-    "message": "Invalid message request",
+    "message": "Richiesta del messaggio non valida",
     "description": ""
   },
 
   "invalidResourceRequest": {
-    "message": "Invalid request",
+    "message": "Richiesta non valida",
     "description": ""
   },
 
 
   "popupTitleResources": {
-    "message": "Resources",
+    "message": "Risorse",
     "description": ""
   },
 
   "popupPrimaryProtocol": {
-    "message": "Protocol:",
+    "message": "Protocollo:",
     "description": ""
   },
 
   "popupPrimaryConnectionState": {
-    "message": "Connection state:",
+    "message": "Stato connessione:",
     "description": ""
   },
 
   "popupPrimaryCipherSuite": {
-    "message": "Cipher suite:",
+    "message": "Suite di crittografia:",
     "description": ""
   },
 
   "popupPrimaryKeyExchange": {
-    "message": "Key exchange:",
+    "message": "Scambio delle chiavi:",
     "description": ""
   },
 
   "popupPrimarySignatureSchema": {
-    "message": "Signature:",
+    "message": "Firma:",
     "description": ""
   },
 
   "popupPrimaryPfs": {
-    "message": "Forward secrecy:",
+    "message": "Forward security:",
     "description": ""
   },
 
@@ -92,37 +92,37 @@
   },
 
   "popupPrimaryCertificate": {
-    "message": "Certificate:",
+    "message": "Certificato:",
     "description": ""
   },
 
   "popupPrimaryTrusted": {
-    "message": "Trusted:",
+    "message": "Affidabile:",
     "description": ""
   },
 
   "popupPrimaryCommonName": {
-    "message": "Common Name:",
+    "message": "Nome Comune:",
     "description": ""
   },
 
   "popupPrimaryIssuer": {
-    "message": "Issuer:",
+    "message": "Emittente:",
     "description": ""
   },
 
   "popupPrimarySerial": {
-    "message": "Serial:",
+    "message": "Seriale:",
     "description": ""
   },
 
   "popupPrimaryValidity": {
-    "message": "Validity from/until:",
+    "message": "Valido da/a:",
     "description": ""
   },
 
   "popupPrimaryDaysRemaining": {
-    "message": "$DAYS$ days remaining",
+    "message": "$DAYS$ giorni rimanenti",
     "description": "",
     "placeholders": {
       "days" : {
@@ -133,27 +133,27 @@
   },
 
   "popupPrimaryKey": {
-    "message": "Key:",
+    "message": "Chiave:",
     "description": ""
   },
 
   "popupPrimaryFingerprint": {
-    "message": "Fingerprint:",
+    "message": "Impronta Digitale:",
     "description": ""
   },
 
   "popupPrimaryRunSslLabsTest": {
-    "message": "Run SSL Labs test",
+    "message": "Esegui il test SSL Labs",
     "description": ""
   },
 
   "popupPrimaryRunSslLabsTestSuffix": {
-    "message": " to see more details.",
+    "message": " per vedere più dettagli.",
     "description": ""
   },
 
   "yes": {
-    "message": "Yes",
+    "message": "Sì",
     "description": ""
   },
 

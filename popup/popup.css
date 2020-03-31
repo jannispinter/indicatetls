@@ -1,3 +1,75 @@
+body {
+ background: white;
+ font-size: 10px;
+ padding: 6px;
+}
+
+#popup-button-resources-icon {
+  display: none;
+  vertical-align: middle;
+  height: 12px;
+  padding-left: 4px;
+}
+
+.popup-primary td {
+  valign: middle;
+}
+.popup-primary img {
+  vertical-align: middle;
+  height: 15px;
+}
+
+.popup-primary-cipher-table {
+  margin:0;
+  padding:0;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #fff;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 3px 10px;
+  transition: 0.3s;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: none;
+}
+
+/* Style the tab content */
+.tab-content {
+  display: none;
+  padding: 6px 12px;
+}
+
+.popup-primary-checkmark-column {
+  vertical-align: top;
+}
+
+.selectable {
+  user-select: all;
+}
+
+/* Legacy */
 .protocol-table table, th, td, tr {
   border: 0px;
   padding: 0 10px 0 10px;
@@ -17,7 +89,7 @@
   float:left;
   height: 75px;
   width: 75px;
-  padding: 10px 10px 10px 10px;
+  padding: 5px 10px 10px 10px;
 }
 
 .warning-text {

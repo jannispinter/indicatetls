@@ -1,36 +1,36 @@
 {
   "extensionDescription": {
-    "message": "Displays negotiated TLS protocol version in the address bar.",
+    "message": "ウェブサイトで使用される TLS プロトコルバージョンをアドレスバーに表示します。",
     "description": "Description of the extension."
   },
 
   "popupTitleHost": {
-    "message": "Host",
+    "message": "ホスト",
     "description": ""
   },
 
   "popupTitleProtocol": {
-    "message": "Protocol",
+    "message": "プロトコル",
     "description": ""
   },
 
   "popupTitleKeyExchange": {
-    "message": "Key Exchange",
+    "message": "鍵交換",
     "description": ""
   },
 
   "popupTitleSignature": {
-    "message": "Signature",
+    "message": "署名",
     "description": ""
   },
 
   "popupRunTest": {
-    "message": "Run test",
+    "message": "テスト実行",
     "description": ""
   },
 
   "popupWarningMessage": {
-    "message": "This website uses $VERSION$ but includes content from servers that only support less secure protocol versions.",
+    "message": "このウェブサイトでは $VERSION$ が使用されていますが、より安全性の低いプロトコルバージョンのみを使用するサーバーからのコンテンツが含まれています",
     "description": "Tells the user that something is wrong with this website.",
     "placeholders": {
       "version" : {
@@ -41,43 +41,43 @@
   },
 
   "invalidMessageRequest": {
-    "message": "Invalid message request",
+    "message": "無効なメッセージ要求",
     "description": ""
   },
 
   "invalidResourceRequest": {
-    "message": "Invalid request",
+    "message": "無効な要求",
     "description": ""
   },
 
 
   "popupTitleResources": {
-    "message": "Resources",
+    "message": "リソース",
     "description": ""
   },
 
   "popupPrimaryProtocol": {
-    "message": "Protocol:",
+    "message": "プロトコル:",
     "description": ""
   },
 
   "popupPrimaryConnectionState": {
-    "message": "Connection state:",
+    "message": "接続状態:",
     "description": ""
   },
 
   "popupPrimaryCipherSuite": {
-    "message": "Cipher suite:",
+    "message": "暗号スイート:",
     "description": ""
   },
 
   "popupPrimaryKeyExchange": {
-    "message": "Key exchange:",
+    "message": "鍵交換:",
     "description": ""
   },
 
   "popupPrimarySignatureSchema": {
-    "message": "Signature:",
+    "message": "署名:",
     "description": ""
   },
 
@@ -87,42 +87,42 @@
   },
 
   "popupPrimaryHsts": {
-    "message": "HSTS preload:",
+    "message": "HSTS プリロード:",
     "description": ""
   },
 
   "popupPrimaryCertificate": {
-    "message": "Certificate:",
+    "message": "証明書:",
     "description": ""
   },
 
   "popupPrimaryTrusted": {
-    "message": "Trusted:",
+    "message": "信頼性:",
     "description": ""
   },
 
   "popupPrimaryCommonName": {
-    "message": "Common Name:",
+    "message": "一般名称:",
     "description": ""
   },
 
   "popupPrimaryIssuer": {
-    "message": "Issuer:",
+    "message": "発行者:",
     "description": ""
   },
 
   "popupPrimarySerial": {
-    "message": "Serial:",
+    "message": "シリアル番号:",
     "description": ""
   },
 
   "popupPrimaryValidity": {
-    "message": "Validity from/until:",
+    "message": "有効期間",
     "description": ""
   },
 
   "popupPrimaryDaysRemaining": {
-    "message": "$DAYS$ days remaining",
+    "message": "残り $DAYS$ 日",
     "description": "",
     "placeholders": {
       "days" : {
@@ -133,32 +133,32 @@
   },
 
   "popupPrimaryKey": {
-    "message": "Key:",
+    "message": "鍵:",
     "description": ""
   },
 
   "popupPrimaryFingerprint": {
-    "message": "Fingerprint:",
+    "message": "フィンガープリント:",
     "description": ""
   },
 
   "popupPrimaryRunSslLabsTest": {
-    "message": "Run SSL Labs test",
+    "message": "SSL Labs のテストを実行すると",
     "description": ""
   },
 
   "popupPrimaryRunSslLabsTestSuffix": {
-    "message": " to see more details.",
+    "message": " 詳しい情報を確認できます",
     "description": ""
   },
 
   "yes": {
-    "message": "Yes",
+    "message": "はい",
     "description": ""
   },
 
   "no": {
-    "message": "No",
+    "message": "いいえ",
     "description": ""
   }
 
