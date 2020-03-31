@@ -31,35 +31,35 @@ async function updateProtocolDetails(securityInfo, hostname) {
   const textCipherSuite = document.getElementById('popup-primary-cipher-suite');
   textCipherSuite.textContent = securityInfo.cipherSuite;
   if (securityInfo.cipherSuite.includes('3DES') || securityInfo.cipherSuite.includes('RC4') || securityInfo.cipherSuite.includes('CBC')) {
-    textCipherSuite.style.color = '#eb3b5a';
+    textCipherSuite.classList.add('color-red');
     setCheckmarkIconRed('popup-primary-icon-cipher-suite');
   }
 
   const textCipherSuiteAead = document.getElementById('popup-primary-cipher-suite-aead');
   if (securityInfo.cipherSuite.includes('GCM') || securityInfo.cipherSuite.includes('CCM') || securityInfo.cipherSuite.includes('CHACHA20')) {
     textCipherSuiteAead.textContent = browser.i18n.getMessage('yes');
-    textCipherSuiteAead.style.color = 'green';
+    textCipherSuiteAead.classList.add('color-green');
   } else {
     textCipherSuiteAead.textContent = browser.i18n.getMessage('no');
-    textCipherSuiteAead.style.color = 'orange';
+    textCipherSuiteAead.classList.add('color-orange');
   }
 
   const textKeyExchange = document.getElementById('popup-primary-kex');
   if(securityInfo.keaGroupName == undefined && securityInfo.cipherSuite.includes('TLS_RSA_')) {
       textKeyExchange.textContent = 'RSA';
-      textKeyExchange.style.color = 'orange';
+      textKeyExchange.classList.add('color-orange');
   } else {
       textKeyExchange.textContent = securityInfo.keaGroupName == undefined ? "N/A" : securityInfo.keaGroupName;
   }
 
   document.getElementById('popup-primary-signature').textContent = securityInfo.signatureSchemeName == undefined ? "N/A" : securityInfo.signatureSchemeName;
   if(securityInfo.signatureSchemeName != undefined && securityInfo.signatureSchemeName.includes('PKCS1')) {
-    document.getElementById('popup-primary-signature').style.color = 'orange';
+    document.getElementById('popup-primary-signature').classList.add('color-orange');
   }
 
   document.getElementById('popup-primary-connection-state').textContent = securityInfo.state;
   if(securityInfo.state != 'secure') {
-    document.getElementById('popup-primary-connection-state').style.color = '#eb3b5a';
+    document.getElementById('popup-primary-connection-state').classList.add('color-red');
     setCheckmarkIconRed('popup-primary-icon-connection-state');
   }
 
@@ -68,16 +68,16 @@ async function updateProtocolDetails(securityInfo, hostname) {
         || (securityInfo.cipherSuite != undefined && (securityInfo.cipherSuite.includes('_DHE_') || securityInfo.cipherSuite.includes('_ECDHE_')))
         || securityInfo.protocolVersion === 'TLSv1.3') {
     textPFS.textContent = browser.i18n.getMessage('yes');
-    textPFS.style.color = 'green';
+    textPFS.classList.add('color-green');
   } else {
     textPFS.textContent = browser.i18n.getMessage('no');
-    textPFS.style.color = '#eb3b5a';
+    textPFS.classList.add('color-red');
     setCheckmarkIconRed('popup-primary-icon-pfs');
   }
 
   const textHsts = document.getElementById('popup-primary-hsts');
   textHsts.textContent = (securityInfo.hsts ? browser.i18n.getMessage("yes") : browser.i18n.getMessage("no"));
-  textHsts.style.color = (securityInfo.hsts ? 'green' : 'black');
+  textHsts.classList.add(securityInfo.hsts ? 'color-green' : 'color-black');
   if(!securityInfo.hsts) {
     setCheckmarkIconYellow('popup-primary-icon-hsts');
   }
@@ -95,11 +95,11 @@ async function updateCertificateDetails(securityInfo) {
 
   const textCertificateTrusted = document.getElementById('popup-primary-certificate-trusted');
   textCertificateTrusted.textContent = (securityInfo.isUntrusted ? browser.i18n.getMessage("no") : browser.i18n.getMessage("yes"));
-  textCertificateTrusted.style.color = (securityInfo.isUntrusted ? '#eb3b5a' : 'black');
+  textCertificateTrusted.classList.add(securityInfo.isUntrusted ? 'color-red' : 'color-black');
 
   const textCertificateEV = document.getElementById('popup-primary-certificate-ev');
   textCertificateEV.textContent = (securityInfo.isExtendedValidation ? ' (Extended Validation)' : '');
-  textCertificateEV.style.color = (securityInfo.isExtendedValidation ? 'green' : 'black');
+  textCertificateEV.classList.add(securityInfo.isExtendedValidation ? 'color-green' : 'color-black');
 
   const textCertificateIssuer = document.getElementById('popup-primary-certificate-issuer');
   serverCertificate.issuer.split(',').forEach(function (splittedIssuer) {
@@ -128,11 +128,11 @@ async function updateCertificateDetails(securityInfo) {
   const textCertificateDaysRemaining = document.getElementById('popup-primary-certificate-days-remaining');
   textCertificateValidFrom.textContent = new Date(serverCertificate.validity.start).toLocaleDateString();
   textCertificateExpires.textContent = new Date(serverCertificate.validity.end).toLocaleDateString();
- 
+
   const daysRemaining = Math.floor((new Date(serverCertificate.validity.end).getTime() - new Date().getTime()) / (1000 * 3600 * 24));
   textCertificateDaysRemaining.textContent =  browser.i18n.getMessage("popupPrimaryDaysRemaining", daysRemaining);
   if (daysRemaining < 30) {
-    textCertificateDaysRemaining.style.color ='#eb3b5a';
+    textCertificateDaysRemaining.classList.add('color-red');
   }
 
   const textCertificateFingerprintFirstLine = document.getElementById('popup-primary-certificate-fingerprint-first-line');
@@ -169,7 +169,7 @@ async function updateTranslations() {
       const message = browser.i18n.getMessage(key);
       document.getElementById(value).textContent = message;
     });
-   
+
 }
 
 async function setCheckmarkIconRed(iconId) {
