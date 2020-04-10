@@ -1,3 +1,21 @@
+html{
+  --color-green: green;
+  --color-red: #eb3b5a;
+  --color-black: #000;
+  --color-orange: orange;
+}
+.color-green {
+  color: var(--color-green);
+}
+.color-red {
+  color: var(--color-red);
+}
+.color-black {
+  color: var(--color-black);
+}
+.color-orange {
+  color: var(--color-orange);
+}
 body {
  background: white;
  font-size: 10px;
@@ -99,4 +117,35 @@ body {
 .warning-triangle img {
   max-width: 100%;
   max-height: 100%;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  html{
+    --color-green: #30e60b;
+    --color-black: #fff;
+  }
+  body {
+    background: #1e1f20;
+    color: #e7e8e7;
+  }
+  a {
+    color: #1aa8f5;
+  }
+  .tab button {
+    background-color: #222;
+    border-bottom: 1px solid #fff;
+    color: #a3a3a3;
+  }
+  .tab button:hover {
+    background-color: #000;
+  }
+  .tab button.active {
+    background-color: #000;
+    border-color: #fff;
+    color: #fff;
+  }
+  #subresource-table tr:not(:first-child){
+    color: #000;
+  }
 }
