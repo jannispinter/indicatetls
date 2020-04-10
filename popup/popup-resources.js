@@ -27,7 +27,7 @@ function insertTableRow(host, securityInfo) {
     addCell(row, document.createTextNode(securityInfo.isExtendedValidation ? 'Yes' : 'No'), securityInfo.cipherSuite);
 
     i18n_test = browser.i18n.getMessage("popupRunTest");
-    addCell(row, createLink(i18n_test, 'https://www.ssllabs.com/ssltest/analyze.html?d=' + host), '');
+    addCell(row, createLink(i18n_test, 'https://www.ssllabs.com/ssltest/analyze.html?hideResults=on&d=' + host), '');
 }
 
 function clearTable() {
