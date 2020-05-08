@@ -22,6 +22,20 @@ var tabMainProtocolMap = new Map();
 var tabMainDowngradedMap = new Map();
 var tabSubresourceProtocolMap = new Map();
 
+async function detectTheme() {
+    var themeInfo = await browser.theme.getCurrent();
+    if (themeInfo.colors.icons === "rgb(249, 249, 250, 0.7)") {
+        versionIconMap.set('TLSv1.3', 'icons/tlsv13_dark.png');
+        versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_dark_warning.png'); 
+    } else {
+        versionIconMap.set('TLSv1.3', 'icons/tlsv13.png');
+        versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_warning.png'); 
+    }
+}
+
+detectTheme();
+
+
 async function updateIcon(tabId, protocolVersion, warning) {
     if (warning) {
         browser.pageAction.setIcon({
@@ -142,3 +156,5 @@ browser.webNavigation.onBeforeNavigate.addListener(handleNavigation,
 );
 
 browser.runtime.onMessage.addListener(handleMessage);
+
+browser.theme.onUpdated.addListener(detectTheme);
