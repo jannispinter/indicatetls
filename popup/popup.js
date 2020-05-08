@@ -1,8 +1,8 @@
 var protocolColorMap = new Map();
-protocolColorMap.set('TLSv1.3', '#26de81'); 
-protocolColorMap.set('TLSv1.2', '#fbc02d'); 
-protocolColorMap.set('TLSv1.1', '#ff0000'); 
-protocolColorMap.set('TLSv1', '#ff0000'); 
+protocolColorMap.set('TLSv1.3', 'tls-1-3');
+protocolColorMap.set('TLSv1.2', 'tls-1-2');
+protocolColorMap.set('TLSv1.1', 'tls-1-1');
+protocolColorMap.set('TLSv1', 'tls-1');
 
 function request(resource, key) {
     const request = browser.runtime.sendMessage({

@@ -17,7 +17,7 @@ function createLink(text, target) {
 
 function insertTableRow(host, securityInfo) {
     var row = table.insertRow(-1);
-    row.setAttribute('bgcolor', protocolColorMap.get(securityInfo.protocolVersion));
+    row.classList.add('bg-' + protocolColorMap.get(securityInfo.protocolVersion));
 
     addCell(row, document.createTextNode(host), securityInfo.cipherSuite);
     addCell(row, document.createTextNode(securityInfo.protocolVersion), securityInfo.cipherSuite);
@@ -38,7 +38,7 @@ function clearTable() {
     const i18n_protocol = browser.i18n.getMessage("popupTitleProtocol");
     const i18n_kex = browser.i18n.getMessage("popupTitleKeyExchange");
     const i18n_signature = browser.i18n.getMessage("popupTitleSignature");
-    var header = '<tr><th>' + i18n_host + '</th><th>' + i18n_protocol + '</th><th>' + i18n_kex + '</th><th>' + i18n_signature + '</th><th>HSTS</th><th>EV</th><th>SSL Labs</th></tr>'; 
+    var header = '<tr><th>' + i18n_host + '</th><th>' + i18n_protocol + '</th><th>' + i18n_kex + '</th><th>' + i18n_signature + '</th><th>HSTS</th><th>EV</th><th>SSL Labs</th></tr>';
     table.innerHTML = header;
 
 }
@@ -65,6 +65,6 @@ async function showWarningMessage(protocolVersion) {
     const warningText = document.getElementById('warning-text');
     const warningBadge = document.getElementById('popup-button-resources-icon');
     warningText.textContent = localized_text;
-    warning.style.display = 'block'; 
-    warningBadge.style.display = 'inline'; 
+    warning.style.display = 'block';
+    warningBadge.style.display = 'inline';
 }
