@@ -24,7 +24,7 @@ var tabSubresourceProtocolMap = new Map();
 
 async function detectTheme() {
     var themeInfo = await browser.theme.getCurrent();
-    if (themeInfo.colors.icons === "rgb(249, 249, 250, 0.7)") {
+    if (themeInfo.colors && themeInfo.colors.icons === "rgb(249, 249, 250, 0.7)") {
         versionIconMap.set('TLSv1.3', 'icons/tlsv13_dark.png');
         versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_dark_warning.png'); 
     } else {
