@@ -1,4 +1,4 @@
-html{
+html {
   --color-green: green;
   --color-red: #eb3b5a;
   --color-black: #000;
@@ -17,18 +17,16 @@ html{
   color: var(--color-orange);
 }
 body {
- background: white;
- font-size: 10px;
- padding: 6px;
+  background: white;
+  font-size: 10px;
+  padding: 6px;
 }
-
 #popup-button-resources-icon {
   display: none;
   vertical-align: middle;
   height: 12px;
   padding-left: 4px;
 }
-
 .popup-primary td {
   valign: middle;
 }
@@ -36,18 +34,17 @@ body {
   vertical-align: middle;
   height: 15px;
 }
-
 .popup-primary-cipher-table {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
-
 /* Style the tab */
+
 .tab {
   overflow: hidden;
 }
-
 /* Style the buttons inside the tab */
+
 .tab button {
   background-color: #fff;
   float: left;
@@ -58,13 +55,13 @@ body {
   transition: 0.3s;
   border-bottom: 1px solid #ddd;
 }
-
 /* Change background color of buttons on hover */
+
 .tab button:hover {
   background-color: #ddd;
 }
-
 /* Create an active/current tablink class */
+
 .tab button.active {
   background-color: #fff;
   border-left: 1px solid #ddd;
@@ -72,28 +69,28 @@ body {
   border-right: 1px solid #ddd;
   border-bottom: none;
 }
-
 /* Style the tab content */
+
 .tab-content {
   display: none;
   padding: 6px 12px;
 }
-
 .popup-primary-checkmark-column {
   vertical-align: top;
 }
-
 .selectable {
   user-select: all;
 }
-
 /* Legacy */
-.protocol-table table, th, td, tr {
+
+.protocol-table table,
+th,
+td,
+tr {
   border: 0px;
   padding: 0 10px 0 10px;
   font-size: 14px;
 }
-
 .warning {
   display: none;
   border-color: #e9a000;
@@ -102,23 +99,21 @@ body {
   font-size: 14px;
   font-weight: bold;
 }
-
 .warning-triangle {
-  float:left;
+  float: left;
   height: 75px;
   width: 75px;
   padding: 5px 10px 10px 10px;
 }
-
 .warning-text {
   padding: 15px 10px 10px 10px;
 }
-
 .warning-triangle img {
   max-width: 100%;
   max-height: 100%;
 }
 /* TLS Classes */
+
 .tls-1-3 {
   color: #26de81;
 }
@@ -139,10 +134,23 @@ body {
 .bg-tls-1 {
   background-color: #ff7e7e;
 }
-
+#subresource-table tr td:last-child a {
+  color: #050095;
+}
+#subresource-table tr.bg-tls-1-3 td:last-child {
+  background-color: #c6ffd5;
+}
+#subresource-table tr.bg-tls-1-2 td:last-child {
+  background-color: #ffe7ae;
+}
+#subresource-table tr.bg-tls-1-1 td:last-child,
+#subresource-table tr.bg-tls-1 td:last-child {
+  background-color: #ffc8c8;
+}
 /* Dark Mode */
+
 @media (prefers-color-scheme: dark) {
-  html{
+  html {
     --color-green: #30e60b;
     --color-black: #fff;
   }
@@ -163,26 +171,20 @@ body {
   .tls-1 {
     color: #ff7e7e;
   }
-  .bg-tls-1-3 a,
-  .bg-tls-1-2 a,
-  .bg-tls-1-1 a,
-  .bg-tls-1 a{
-    color: #000;
-  }
   .tab button {
-    background-color: #222;
+    background-color: #353637;
     border-bottom: 1px solid #fff;
-    color: #a3a3a3;
+    color: #ddd;
   }
   .tab button:hover {
-    background-color: #000;
+    background-color: #1e1f20;
   }
   .tab button.active {
-    background-color: #000;
+    background-color: #1e1f20;
     border-color: #fff;
     color: #fff;
   }
-  #subresource-table tr:not(:first-child){
+  #subresource-table tr:not(:first-child) {
     color: #000;
   }
 }
