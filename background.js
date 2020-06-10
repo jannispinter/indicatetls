@@ -51,7 +51,8 @@ async function updateIcon(tabId, protocolVersion, warning) {
 }
 
 async function loadSavedSecurityInfoAndUpdateIcon(details) {
-    cached_version = tabMainProtocolMap.get(details.tabId).protocolVersion;
+    securityInfo = tabMainProtocolMap.get(details.tabId);
+    cached_version = securityInfo !== "undefined" ? securityInfo.protocolVersion : undefined;
     if (typeof cached_version !== "undefined" && cached_version !== "unknown") {
         if (tabMainDowngradedMap.has(details.tabId)) {
             await updateIcon(details.tabId, cached_version, tabMainDowngradedMap.get(details.tabId));
