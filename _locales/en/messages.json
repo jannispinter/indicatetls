@@ -160,6 +160,11 @@
   "no": {
     "message": "No",
     "description": ""
+  },
+
+  "clearCache": {
+    "message": "Clear browser cache and/or try hard-refresh",
+    "description": "Tells the user to clear browser cache or to try hard-refresh when TLS version in unknown"
   }
 
 }

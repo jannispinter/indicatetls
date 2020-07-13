@@ -1,35 +1,38 @@
 var versionIconMap = new Map();
-versionIconMap.set('TLSv1.3', 'icons/tlsv13.png'); 
-versionIconMap.set('TLSv1.2', 'icons/tlsv12.png'); 
-versionIconMap.set('TLSv1.1', 'icons/tlsv11.png'); 
-versionIconMap.set('TLSv1', 'icons/tlsv10.png'); 
+versionIconMap.set('TLSv1.3', 'icons/tlsv13.png');
+versionIconMap.set('TLSv1.2', 'icons/tlsv12.png');
+versionIconMap.set('TLSv1.1', 'icons/tlsv11.png');
+versionIconMap.set('TLSv1', 'icons/tlsv10.png');
 versionIconMap.set('unknown', 'icons/tlsunknown.png');
 
 var versionIconWarningMap = new Map();
-versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_warning.png'); 
-versionIconWarningMap.set('TLSv1.2', 'icons/tlsv12_warning.png'); 
-versionIconWarningMap.set('TLSv1.1', 'icons/tlsv11_warning.png'); 
-versionIconWarningMap.set('TLSv1', 'icons/tlsv10_warning.png'); 
+versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_warning.png');
+versionIconWarningMap.set('TLSv1.2', 'icons/tlsv12_warning.png');
+versionIconWarningMap.set('TLSv1.1', 'icons/tlsv11_warning.png');
+versionIconWarningMap.set('TLSv1', 'icons/tlsv10_warning.png');
 
 var versionComparisonMap = new Map();
-versionComparisonMap.set('TLSv1.3', 13); 
-versionComparisonMap.set('TLSv1.2', 12); 
-versionComparisonMap.set('TLSv1.1', 11); 
-versionComparisonMap.set('TLSv1', 10); 
+versionComparisonMap.set('TLSv1.3', 13);
+versionComparisonMap.set('TLSv1.2', 12);
+versionComparisonMap.set('TLSv1.1', 11);
+versionComparisonMap.set('TLSv1', 10);
 versionComparisonMap.set('unknown', 0);
 
 var tabMainProtocolMap = new Map();
 var tabMainDowngradedMap = new Map();
 var tabSubresourceProtocolMap = new Map();
 
+var translationElementMap = new Map();
+translationElementMap.set("popupTitleResources", "popup-button-resources-text");
+
 async function detectTheme() {
     var themeInfo = await browser.theme.getCurrent();
-    if (themeInfo.colors.icons === "rgb(249, 249, 250, 0.7)") {
+    if (themeInfo.colors && themeInfo.colors.icons === "rgb(249, 249, 250, 0.7)") {
         versionIconMap.set('TLSv1.3', 'icons/tlsv13_dark.png');
-        versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_dark_warning.png'); 
+        versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_dark_warning.png');
     } else {
         versionIconMap.set('TLSv1.3', 'icons/tlsv13.png');
-        versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_warning.png'); 
+        versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_warning.png');
     }
 }
 
@@ -37,27 +40,36 @@ detectTheme();
 
 
 async function updateIcon(tabId, protocolVersion, warning) {
-    if (warning) {
-        browser.pageAction.setIcon({
-            tabId: tabId, path: versionIconWarningMap.get(protocolVersion)
-        });
+    if (!protocolVersion) {
+        if (tabId >= 0) {
+            browser.pageAction.setTitle({ tabId: tabId, title: browser.i18n.getMessage('clearCache') });
+        }
     } else {
-        browser.pageAction.setIcon({
-            tabId: tabId, path: versionIconMap.get(protocolVersion)
-        }); 
+        if (warning) {
+            browser.pageAction.setIcon({
+                tabId: tabId, path: versionIconWarningMap.get(protocolVersion)
+            });
+        } else {
+            browser.pageAction.setIcon({
+                tabId: tabId, path: versionIconMap.get(protocolVersion)
+            });
+        }
+        browser.pageAction.setTitle({ tabId: tabId, title: protocolVersion});
+        browser.pageAction.setPopup({tabId: tabId, popup: "/popup/popup.html"});
     }
-    browser.pageAction.setTitle({tabId: tabId, title: protocolVersion});
-    browser.pageAction.setPopup({tabId: tabId, popup: "/popup/popup.html"});
 }
 
 async function loadSavedSecurityInfoAndUpdateIcon(details) {
-    cached_version = tabMainProtocolMap.get(details.tabId).protocolVersion;
+    const securityInfo = tabMainProtocolMap.get(details.tabId);
+    cached_version = securityInfo ? securityInfo.protocolVersion : undefined;
     if (typeof cached_version !== "undefined" && cached_version !== "unknown") {
         if (tabMainDowngradedMap.has(details.tabId)) {
             await updateIcon(details.tabId, cached_version, tabMainDowngradedMap.get(details.tabId));
         } else {
             await updateIcon(details.tabId, cached_version, false);
         }
+    } else {
+        await updateIcon(details.tabId, undefined, false);
     }
 }
 
