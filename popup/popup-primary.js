@@ -21,7 +21,7 @@ function updatePopupSecurityInfo(securityInfo, hostname) {
 async function updateProtocolDetails(securityInfo, hostname) {
   const textTlsProtocolVersion = document.getElementById('popup-primary-protcol-tls-version');
   textTlsProtocolVersion.textContent = securityInfo.protocolVersion;
-  textTlsProtocolVersion.style.color = protocolColorMap.get(securityInfo.protocolVersion);
+  textTlsProtocolVersion.classList.add(protocolColorMap.get(securityInfo.protocolVersion));
   if(securityInfo.protocolVersion === 'TLSv1' || securityInfo.protocolVersion === 'SSLv3') {
     setCheckmarkIconRed('popup-primary-icon-protocol');
   } else if (securityInfo.protocolVersion === 'TLSv1.1') {
