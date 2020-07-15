@@ -160,6 +160,11 @@
   "no": {
     "message": "いいえ",
     "description": ""
+  },
+
+  "clearCache": {
+    "message": "ブラウザーのキャッシュをクリアまたはスーパーリロードしてください",
+    "description": "Tells the user to clear browser cache or to try hard-refresh when TLS version in unknown"
   }
 
 }
