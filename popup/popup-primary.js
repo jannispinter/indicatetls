@@ -137,8 +137,11 @@ async function updateCertificateDetails(securityInfo) {
   textCertificateExpires.textContent = new Date(serverCertificate.validity.end).toLocaleDateString();
 
   const daysRemaining = Math.floor((new Date(serverCertificate.validity.end).getTime() - new Date().getTime()) / (1000 * 3600 * 24));
+  const certificateValidFrom = new Date(serverCertificate.validity.start).getTime();
+  const certificateValidTo = new Date(serverCertificate.validity.end).getTime();
+  const percentageRemaining = (certificateValidTo - new Date().getTime()) / (certificateValidTo - certificateValidFrom)
   textCertificateDaysRemaining.textContent =  browser.i18n.getMessage("popupPrimaryDaysRemaining", daysRemaining);
-  if (daysRemaining < 30) {
+  if (percentageRemaining < 0.15) {
     textCertificateDaysRemaining.classList.add('color-red');
   }
 
