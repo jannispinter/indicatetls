@@ -91,6 +91,11 @@
     "description": ""
   },
 
+  "popupPrimaryEch": {
+    "message": "Encrypted ClientHello:",
+    "description": ""
+  },
+
   "popupPrimaryCertificate": {
     "message": "証明書:",
     "description": ""
@@ -160,6 +165,21 @@
   "no": {
     "message": "いいえ",
     "description": ""
+  }
+
+  "secure": {
+    "message": "セキュア",
+    "description": ""
+  },
+
+  "insecure": {
+    "message": "セキュアではない",
+    "description": ""
+  },
+
+  "clearCache": {
+    "message": "ブラウザーキャッシュをクリアします / ハードリフレッシュを試みます",
+    "description": "TLS バージョンが不明な場合、ブラウザーのキャッシュをクリアする、あるいはハードリフレッシュを試みるようユーザーに通知します"
   }
 
 }
