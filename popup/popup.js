@@ -1,4 +1,5 @@
 var protocolColorMap = new Map();
+protocolColorMap.set('TLSv1.3q', 'tls-1-3q');
 protocolColorMap.set('TLSv1.3', 'tls-1-3');
 protocolColorMap.set('TLSv1.2', 'tls-1-2');
 protocolColorMap.set('TLSv1.1', 'tls-1-1');

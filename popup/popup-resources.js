@@ -17,7 +17,10 @@ function createLink(text, target) {
 
 function insertTableRow(host, securityInfo) {
     var row = table.insertRow(-1);
-    row.classList.add('bg-' + protocolColorMap.get(securityInfo.protocolVersion));
+    const pqc_kem = securityInfo.keaGroupName == 'mlkem768x25519' ? true : false;
+    const protocolVersion = pqc_kem ? securityInfo.protocolVersion + 'q' : securityInfo.protocolVersion;
+
+    row.classList.add('bg-' + protocolColorMap.get(protocolVersion));
 
     addCell(row, document.createTextNode(host), securityInfo.cipherSuite);
     addCell(row, document.createTextNode(securityInfo.protocolVersion), securityInfo.cipherSuite);

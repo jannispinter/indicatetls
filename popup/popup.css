@@ -3,6 +3,7 @@ html {
   --color-red: #eb3b5a;
   --color-black: #000;
   --color-orange: orange;
+  --color-purple: #6d00ff;
 }
 .color-green {
   color: var(--color-green);
@@ -15,6 +16,10 @@ html {
 }
 .color-orange {
   color: var(--color-orange);
+}
+.color-purple {
+  color: var(--color-purple);
+  font-weight: bold;
 }
 body {
   background: white;
@@ -114,7 +119,10 @@ tr {
 }
 /* TLS Classes */
 
-.tls-1-3 {
+.tls-1-3q{
+  color: #6d00ff;
+}
+.tls-1-3{
   color: #26de81;
 }
 .tls-1-2 {
@@ -123,6 +131,10 @@ tr {
 .tls-1-1,
 .tls-1 {
   color: #ff0000;
+}
+.bg-tls-1-3q {
+  color: #fff;
+  background-color: #6d00ff;
 }
 .bg-tls-1-3 {
   background-color: #75ff98;
@@ -136,6 +148,9 @@ tr {
 }
 #subresource-table tr td:last-child a {
   color: #050095;
+}
+#subresource-table tr.bg-tls-1-3q td:last-child {
+  background-color: #d7baff;
 }
 #subresource-table tr.bg-tls-1-3 td:last-child {
   background-color: #c6ffd5;

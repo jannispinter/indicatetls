@@ -1,4 +1,5 @@
 var versionIconMap = new Map();
+versionIconMap.set('TLSv1.3q', 'icons/tlsv13_pqc.png');
 versionIconMap.set('TLSv1.3', 'icons/tlsv13.png');
 versionIconMap.set('TLSv1.2', 'icons/tlsv12.png');
 versionIconMap.set('TLSv1.1', 'icons/tlsv11.png');
@@ -6,12 +7,14 @@ versionIconMap.set('TLSv1', 'icons/tlsv10.png');
 versionIconMap.set('unknown', 'icons/tlsunknown.png');
 
 var versionIconWarningMap = new Map();
+versionIconWarningMap.set('TLSv1.3q', 'icons/tlsv13_pqc_warning.png');
 versionIconWarningMap.set('TLSv1.3', 'icons/tlsv13_warning.png');
 versionIconWarningMap.set('TLSv1.2', 'icons/tlsv12_warning.png');
 versionIconWarningMap.set('TLSv1.1', 'icons/tlsv11_warning.png');
 versionIconWarningMap.set('TLSv1', 'icons/tlsv10_warning.png');
 
 var versionComparisonMap = new Map();
+versionComparisonMap.set('TLSv1.3q', 130);
 versionComparisonMap.set('TLSv1.3', 13);
 versionComparisonMap.set('TLSv1.2', 12);
 versionComparisonMap.set('TLSv1.1', 11);
@@ -39,12 +42,13 @@ async function detectTheme() {
 detectTheme();
 
 
-async function updateIcon(tabId, protocolVersion, warning) {
-    if (!protocolVersion) {
+async function updateIcon(tabId, securityInfo, warning) {
+    if (!securityInfo) {
         if (tabId >= 0) {
             browser.pageAction.setTitle({ tabId: tabId, title: browser.i18n.getMessage('clearCache') });
         }
     } else {
+	const protocolVersion = determineProtocolVersion(securityInfo);   
         if (warning) {
             browser.pageAction.setIcon({
                 tabId: tabId, path: versionIconWarningMap.get(protocolVersion)
@@ -65,9 +69,9 @@ async function loadSavedSecurityInfoAndUpdateIcon(details) {
 
     if (typeof cached_version !== "undefined" && cached_version !== "unknown") {
         if (tabMainDowngradedMap.has(details.tabId)) {
-            await updateIcon(details.tabId, cached_version, tabMainDowngradedMap.get(details.tabId));
+            await updateIcon(details.tabId, securityInfo, tabMainDowngradedMap.get(details.tabId));
         } else {
-            await updateIcon(details.tabId, cached_version, false);
+            await updateIcon(details.tabId, securityInfo, false);
         }
     } else {
         await updateIcon(details.tabId, undefined, false);
@@ -93,7 +97,7 @@ async function processSecurityInfo(details) {
         if (details.type === 'main_frame') {
             tabMainProtocolMap.set(details.tabId, securityInfo);
             tabMainDowngradedMap.set(details.tabId, false);
-            await updateIcon(details.tabId, securityInfo.protocolVersion, false);
+            await updateIcon(details.tabId, securityInfo, false);
         }
 
         // save the security info for third party hosts that were loaded within
@@ -103,11 +107,11 @@ async function processSecurityInfo(details) {
         subresourceMap.set(host, securityInfo);
         tabSubresourceProtocolMap.set(details.tabId, subresourceMap);
 
-        var mainProtocolVersion = versionComparisonMap.get(tabMainProtocolMap.get(details.tabId).protocolVersion);
+        var mainProtocolVersion = versionComparisonMap.get(determineProtocolVersion(tabMainProtocolMap.get(details.tabId)));
         for (const securityInfo of subresourceMap.values()) {
-            if (versionComparisonMap.get(securityInfo.protocolVersion) < mainProtocolVersion) {
+            if (versionComparisonMap.get(determineProtocolVersion(securityInfo)) < mainProtocolVersion) {
                 tabMainDowngradedMap.set(details.tabId, true);
-                await updateIcon(details.tabId, tabMainProtocolMap.get(details.tabId).protocolVersion, true);
+                await updateIcon(details.tabId, tabMainProtocolMap.get(details.tabId), true);
                 break;
             }
         }
@@ -115,6 +119,12 @@ async function processSecurityInfo(details) {
     } catch(error) {
         console.error(error);
     }
+}
+
+function determineProtocolVersion(securityInfo) {
+    const pqc_kem = securityInfo.keaGroupName == 'mlkem768x25519' ? true : false;
+    const protocolVersion = pqc_kem ? securityInfo.protocolVersion + 'q' : securityInfo.protocolVersion; 
+    return protocolVersion;
 }
 
 // clear security info when navigating to a different URL

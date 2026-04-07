@@ -154,6 +154,16 @@
   "no": {
     "message": "Nein",
     "description": ""
+  },
+
+  "secure": {
+    "message": "Sicher",
+    "description": ""
+  },
+
+  "insecure": {
+    "message": "Unsicher",
+    "description": ""
   }
 
 }

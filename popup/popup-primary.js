@@ -52,6 +52,15 @@ async function updateProtocolDetails(securityInfo, hostname) {
       textKeyExchange.textContent = securityInfo.keaGroupName == undefined ? "N/A" : securityInfo.keaGroupName;
   }
 
+  // PQC KEM
+  const textCipherSuiteSndl = document.getElementById('popup-primary-cipher-suite-sndl');
+  textCipherSuiteSndl.textContent = browser.i18n.getMessage('insecure');
+  if (securityInfo.keaGroupName == 'mlkem768x25519') {
+      textKeyExchange.classList.add('color-purple');
+      textCipherSuiteSndl.classList.add('color-purple');
+      textCipherSuiteSndl.textContent = browser.i18n.getMessage('secure');
+  } 
+
   document.getElementById('popup-primary-signature').textContent = securityInfo.signatureSchemeName == undefined ? "N/A" : securityInfo.signatureSchemeName;
   if(securityInfo.signatureSchemeName != undefined && securityInfo.signatureSchemeName.includes('PKCS1')) {
     document.getElementById('popup-primary-signature').classList.add('color-orange');
